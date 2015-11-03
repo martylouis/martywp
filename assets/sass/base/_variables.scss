@@ -1,0 +1,30 @@
+// Brand colors
+// -------------------------
+
+$base-gray:           lighten(black, 50);
+$base-gray-dark:      lighten(black, 25);
+$base-gray-light:     lighten(black, 75);
+
+$base-primary:        tomato;
+
+
+// Typography
+// -------------------------
+$base-font-size:      15px;
+$base-text-color:     $base-gray-dark;
+$base-line-height:    1.625;
+
+$ff-sans:             '';
+$ff-serif:            '';
+$ff-alt:              '';
+
+
+// Breakpoints
+// -------------------------
+$base-breakpoints: (
+  xs: 0,
+  sm: em(480px, $base-font-size),
+  md: em(768px, $base-font-size),
+  lg: em(960px, $base-font-size),
+  xl: em(1280px, $base-font-size)
+);

@@ -1,0 +1,66 @@
+html {
+  @include antialias-text();
+  font-size: $base-font-size;
+
+  @media screen and (min-width: 480px) {
+    font-size: ($base-font-size + 1);
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: ($base-font-size + 2);
+  }
+}
+
+
+body {
+  font-size: 100%;
+  color: $base-text-color;
+  line-height: $base-line-height;
+}
+
+::selection {
+  background-color: complement(lighten($base-primary, 20));
+}
+
+p {
+  margin: 1em 0;
+}
+
+a {
+  color: $base-primary;
+}
+
+button {
+  @include antialias-text();
+}
+
+// Headings
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
+// WordPress Generated Classes
+// http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alignleft {}
+.alignright {}
+
+.alignleft,
+.alignright {
+  margin-bottom: 1em;
+}
+
+figure.alignone {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
