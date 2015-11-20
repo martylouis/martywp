@@ -14,10 +14,11 @@ $base-font-size:      15px;
 $base-text-color:     $base-gray-dark;
 $base-line-height:    1.625;
 
-$ff-sans:             '';
+$ff-sans:             "Open Sans", sans-serif;
 $ff-serif:            '';
 $ff-alt:              '';
 
+$base-font-family:    $ff-sans;
 
 // Breakpoints
 // -------------------------
