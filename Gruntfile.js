@@ -24,22 +24,13 @@ module.exports = function(grunt) {
         '!assets/**/*.min.*'
       ]
     },
-    compass: {
-      clean: {
-        options: {
-          clean: true,
-          importPath: $bower_dir,
-          sassDir: 'assets/sass',
-          cssDir: 'assets/css',
-        }
+    sass: {
+      options: {
+        // includePaths: require('node-neat').includePaths,
+        sourceMap: true
       },
-      dev: {
-        options: {
-          importPath: $bower_dir,
-          sassDir: 'assets/sass',
-          cssDir: 'assets/css',
-          sourcemap: true
-        },
+      dist: {
+        files: { 'assets/css/main.css': 'assets/sass/main.scss'  }
       }
     },
     concat: {
@@ -119,11 +110,11 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      compass: {
+      sass: {
         files: [
           'assets/sass/**/*.scss'
         ],
-        tasks: ['compass:dev', 'autoprefixer:dev']
+        tasks: ['sass', 'autoprefixer:dev']
       },
       js: {
         files: [
@@ -167,7 +158,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', [
     'clean',
     'jshint',
-    'compass:dev',
+    'sass',
     'autoprefixer:dev',
     'concat',
     'modernizr'
@@ -175,7 +166,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'jshint',
-    'compass',
+    'sass',
     'autoprefixer:build',
     'concat',
     'cssmin',
