@@ -6,12 +6,13 @@ _base is a WordPress starter theme.
 
 - [Grunt](http://gruntjs.com)
 - [Bower](http://bower.io)
+- [Sass](http://sass-lang.com/) w/ minimal default styles.
 - [BrowserSync](http://www.browsersync.io/)
 
 ## Install and develop
 
 #### 1. Clone repo
-`git clone git@bitbucket.org:martylouis/_base.git`
+`git clone https://github.com/martylouis/_base.git`
 
 #### 2. Run `npm install`
 This will download all [Grunt](http://gruntjs.com/) package dependencies and install [Bower](http://bower.io) components. If you don't have it yet, see [how to install node](https://docs.npmjs.com/getting-started/installing-node).
@@ -48,6 +49,7 @@ Have fun!
 ### WordPress Configuration
 
 - See `lib/init.php` to setup/update navigation menus, post thumbnail sizes, post formats, and sidebars.
+- See `lib/scripts.php` to add, update or remove theme CSS and Javascripts.
 - See `lib/config.php` to enable or disable theme features and to define a Google Analytics ID.
 
 
@@ -59,20 +61,11 @@ Have fun!
 
 Review `Grunfile.js` to familiarize yourself with the setup.
 
-### WP ENGINE and Git push
+### WP ENGINE Ready
+
+This themes is setup to be pushed up to WP Engine. By default we ignore tracking the WordPress install files and theme compiled files, `assets/css/main.css`, `assets/css/main.css.map`, and `assets/js/scripts.js`.
 
 [See WP Engine's documentation](http://wpengine.com/git/) for setting up your local WP install to push up to WP Engine production and staging.
-
-
-##### Edit `.gitignore`
-
-To correctly push up to production via git you need to track production assets.
-
-```sh
-# Comment to track production assets
-# dist
-# assets/manifest.json
-```
 
 ------
 

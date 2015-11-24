@@ -8,10 +8,6 @@ assets/css/main.css
 assets/css/main.css.map
 assets/js/scripts.js
 
-# Comment out track production assets
-dist
-assets/manifest.json
-
 ## OSX
 ## --------------------------
 .DS_Store
