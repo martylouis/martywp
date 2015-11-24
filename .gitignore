@@ -4,12 +4,11 @@ node_modules
 npm-debug.log
 .sass-cache
 bower_components
-assets/vendor/*
+assets/css/main.css
 assets/css/main.css.map
-assets/css/*main*.css
 assets/js/scripts.js
 
-# Comment to track production assets
+# Comment out track production assets
 dist
 assets/manifest.json
 

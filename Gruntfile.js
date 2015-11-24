@@ -54,7 +54,7 @@ module.exports = function(grunt) {
     cssmin: {
       build: {
         files: {
-          'dist/css/main.min.css' : 'assets/css/main.css'
+          'assets/css/main.min.css' : 'assets/css/main.css'
         },
         options: {
           // keepBreaks: true,
@@ -65,7 +65,8 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          'dist/js/scripts.min.js': [$jsFileList]
+          'assets/js/scripts.min.js': [$jsFileList],
+          'assets/js/vendor/jquery.min.js' : 'assets/bower_components/jquery/dist/jquery.min.js'
         }
       }
     },
@@ -89,10 +90,7 @@ module.exports = function(grunt) {
       build: {
         dest: 'assets/js/vendor/modernizr.min.js',
         files: {
-          'src': [
-            ['assets/js/scripts.js'],
-            ['assets/css/main.css']
-          ]
+          'src': ['assets/js/scripts.js', 'assets/css/main.css']
         },
         extra: {
           shiv: true
@@ -102,7 +100,7 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      src: ["assets/css/main*", "assets/js/scripts.js", "dist"]
+      src: ["assets/css/main*", "assets/js/scripts.js"]
     },
     version: {
       default: {
@@ -116,7 +114,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'lib/scripts.php': 'dist/{css,js}/{main,scripts}.min.{css,js}'
+          'lib/scripts.php': 'assets/{css,js}/{main,scripts}.min.{css,js}'
         }
       }
     },
