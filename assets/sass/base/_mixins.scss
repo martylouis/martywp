@@ -1,7 +1,32 @@
-
 // Antialias text
 @mixin antialias-text() {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+
+// Media queries
+@mixin media-min($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin media-max($size) {
+  @media screen and (max-width: ($size - 1)) {
+    @content;
+  }
+}
+
+@mixin media-min-max($min, $max) {
+  @media screen and (min-width: $min) and (max-width: ($max - 1)) {
+    @content;
+  }
+}
+
+// Flex Container
+@mixin flex-container( $flow: row wrap ) {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: $flow;
 }
