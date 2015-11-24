@@ -63,7 +63,7 @@ Review `Grunfile.js` to familiarize yourself with the setup.
 
 ### WP ENGINE Ready
 
-This themes is setup to be pushed up to WP Engine. By default we ignore tracking the WordPress install files and theme compiled files, `assets/css/main.css`, `assets/css/main.css.map`, and `assets/js/scripts.js`.
+This themes is setup to be pushed up to WP Engine. By default we ignore tracking theme compiled files, `assets/css/main.css`, `assets/css/main.css.map`, and `assets/js/scripts.js`.
 
 [See WP Engine's documentation](http://wpengine.com/git/) for setting up your local WP install to push up to WP Engine production and staging.
 
