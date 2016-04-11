@@ -8,6 +8,6 @@
     <footer class="post-footer">
       <?php wp_link_pages(array('before' => '<nav class="post-nav"><p>' . __('Pages:', '_base'), 'after' => '</p></nav>')); ?>
     </footer>
-    <?php comments_template('/parts/post-comments.php'); ?>
+    <?php // comments_template('/parts/post-comments.php'); ?>
   </article>
 <?php endwhile; ?>
