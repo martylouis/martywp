@@ -57,7 +57,7 @@ function _base_display_sidebar() {
        * Any of these page templates that return true won't show the sidebar
        */
       array(
-        'template-custom.php'
+        // 'template-custom.php'
       )
     );
     $display = apply_filters('_base/display_sidebar', $sidebar_config->display);

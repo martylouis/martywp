@@ -10,7 +10,7 @@ function is_element_empty($element) {
 // Tell WordPress to use searchform.php from the templates/ directory
 function base_get_search_form() {
   $form = '';
-  locate_template('/templates/form-search.php', true, false);
+  locate_template('/parts/form-search.php', true, false);
   return $form;
 }
 add_filter('get_search_form', 'base_get_search_form');
