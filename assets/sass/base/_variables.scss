@@ -10,11 +10,11 @@ $base-primary:        tomato;
 
 // Typography
 // -------------------------
-$base-font-size:      15px;
+$base-font-size:      16px;
 $base-text-color:     $base-gray-dark;
 $base-line-height:    1.625;
 
-$ff-sans:             "Open Sans", sans-serif;
+$ff-sans:             "Helvetica Neue", Helvetica, Arial, sans-serif;
 $ff-serif:            '';
 $ff-alt:              '';
 
@@ -23,9 +23,8 @@ $base-font-family:    $ff-sans;
 // Breakpoints
 // -------------------------
 $base-breakpoints: (
-  xs: 0,
-  sm: em(480px, $base-font-size),
-  md: em(768px, $base-font-size),
-  lg: em(960px, $base-font-size),
-  xl: em(1280px, $base-font-size)
+  sm: 480px,
+  md: 768px,
+  lg: 960px,
+  xl: 1280px,
 );

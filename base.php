@@ -1,7 +1,7 @@
 <?php
-  get_template_part('templates/base', 'head');
+  get_template_part('parts/base', 'head');
   do_action('get_header');
-  get_template_part('templates/base', 'header');
+  get_template_part('parts/base', 'header');
 
   include _base_template_path();
 
@@ -10,5 +10,5 @@
   endif;
 
   do_action('get_footer');
-  get_template_part('templates/base', 'footer');
+  get_template_part('parts/base', 'footer');
 ?>

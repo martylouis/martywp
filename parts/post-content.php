@@ -1,7 +1,7 @@
 <?php while (have_posts()) : the_post(); ?>
   <article <?php post_class('post-article'); ?>>
-    <?php get_template_part('templates/post', 'thumb'); ?>
-    <?php get_template_part('templates/post', 'header'); ?>
+    <?php get_template_part('parts/post', 'thumb'); ?>
+    <?php get_template_part('parts/post', 'header'); ?>
     <div class="post-content">
       <?php the_content(); ?>
     </div>
