@@ -6,7 +6,7 @@
  * 1. /theme/assets/css/main.css
  *
  * Enqueue scripts in the following order:
- * 1. jquery-2.1.4.min.js via Google CDN
+ * 1. jquery-2.2.3.min.js via Google CDN
  * 2. /theme/assets/js/vendor/modernizr.min.js
  * 3. /theme/assets/js/scripts.js
  *
@@ -24,7 +24,7 @@ function _base_scripts() {
       'css'           => '/assets/css/main.css',
       'js'            => '/assets/js/scripts.js',
       'modernizr'     => '/assets/js/vendor/modernizr.min.js',
-      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js'
+      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.js'
     ];
   } else {
     $get_manifest = file_get_contents(get_template_directory() . '/assets/manifest.json');
@@ -33,7 +33,7 @@ function _base_scripts() {
       'css'           => '/assets/css/main.min.css?' . $manifest['assets/css/main.min.css']['hash'],
       'js'            => '/assets/js/scripts.min.js?' . $manifest['assets/js/scripts.min.js']['hash'],
       'modernizr'     => '/assets/js/vendor/modernizr.min.js',
-      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'
+      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js'
     ];
   }
 
@@ -65,7 +65,7 @@ function _base_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
-    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/js/vendor/jquery.min.js?2.1.4"><\/script>\')</script>' . "\n";
+    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/js/vendor/jquery.min.js?2.2.3"><\/script>\')</script>' . "\n";
     $add_jquery_fallback = false;
   }
 

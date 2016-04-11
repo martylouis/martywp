@@ -1,16 +1,13 @@
 'use strict';
 
 module.exports = function(grunt) {
-  // Load all tasks
   require('load-grunt-tasks')(grunt);
-  // Show elapsed time
   require('time-grunt')(grunt);
 
-  var $bower_dir = 'assets/bower_components/';
-  var $jsFileList = [
-    'assets/js/plugins/*.js',
-    'assets/js/_*.js'
-  ];
+  var $js_files = [
+        'assets/js/plugins/*.js',
+        'assets/js/_*.js'
+      ];
 
   grunt.initConfig({
     jshint: {
@@ -19,14 +16,14 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        'assets/js/*.js',
-        '!assets/js/scripts.js',
-        '!assets/**/*.min.*'
+        'assets/js/_main.js',
       ]
     },
     sass: {
       options: {
-        // includePaths: require('node-neat').includePaths,
+        // includePaths: [
+        //   'node_modules/bootstrap',
+        // ],
         sourceMap: true
       },
       dist: {
@@ -38,9 +35,13 @@ module.exports = function(grunt) {
         separator: ';',
       },
       dist: {
-        src: [$jsFileList],
+        src: [$js_files],
         dest: 'assets/js/scripts.js',
       },
+      jquery: {
+        src: 'node_modules/jquery/dist/jquery.min.js',
+        dest: 'assets/js/vendor/jquery.min.js'
+      }
     },
     cssmin: {
       build: {
@@ -56,8 +57,7 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          'assets/js/scripts.min.js': [$jsFileList],
-          'assets/js/vendor/jquery.min.js' : 'assets/bower_components/jquery/dist/jquery.min.js'
+          'assets/js/scripts.min.js': [$js_files],
         }
       }
     },
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: [
-          $jsFileList,
+          $js_files,
           '<%= jshint.all %>'
         ],
         tasks: ['jshint', 'concat']
