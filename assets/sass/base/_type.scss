@@ -1,5 +1,4 @@
 html {
-  @include antialias-text();
   font-size: $base-font-size;
 
   @media screen and (min-width: 480px) {
@@ -11,6 +10,13 @@ html {
   }
 }
 
+body,
+input,
+textarea,
+select,
+button {
+  @include antialias-text();
+}
 
 body {
   font-size: 100%;
@@ -19,20 +25,13 @@ body {
   line-height: $base-line-height;
 }
 
-::selection {
-  background-color: complement(lighten($base-primary, 20));
-}
-
 p {
-  margin: 1em 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 a {
   color: $base-primary;
-}
-
-button {
-  @include antialias-text();
 }
 
 // Headings
@@ -43,25 +42,110 @@ h4 {}
 h5 {}
 h6 {}
 
-// WordPress Generated Classes
+// WordPress Core Generated Classes
 // http://codex.wordpress.org/CSS#WordPress_Generated_Classes
 
-.aligncenter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.alignnone {
+    margin: 0.25em 1em 1em 0;
 }
 
-.alignleft {}
-.alignright {}
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 0.25em auto 0.25em auto;
+}
 
-.alignleft,
 .alignright {
-  margin-bottom: 1em;
+    float:right;
+    margin: 0.25em 0 1em 1em;
 }
 
-figure.alignone {
-  margin-left: 0;
-  margin-right: 0;
-  max-width: 100%;
+.alignleft {
+    float: left;
+    margin: 0.25em 1em 1em 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 0.25em 0 1em 1em;
+}
+
+a img.alignnone {
+    margin: 0.25em 1em 1em 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 0.25em 1em 1em 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 0.25em 0.25em 0.5em;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 1em 1em 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 1em 1em 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 1em 1em;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 0.75em;
+    line-height: 1.25;
+    margin: 0;
+    padding: 0 0.25em 0.25em;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
 }

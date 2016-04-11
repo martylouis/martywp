@@ -12,9 +12,11 @@
 
 // Antialias text
 @mixin antialias-text() {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: rgba(0,0,0,.01) 0 0 1px;
+  -moz-font-feature-settings: 'liga', 'kern';
 }
 
 // Media queries
