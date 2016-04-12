@@ -35,91 +35,140 @@ a {
 }
 
 // Headings
-h1 {}
-h2 {}
-h3 {}
-h4 {}
-h5 {}
-h6 {}
+h1 {
+  font-size: 2em;
+  line-height: 1.25;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+h2 {
+  font-size: 1.75em;
+  line-height: 1.25;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.25;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+h4 {
+  font-size: 1.25em;
+  line-height: 1.5;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+h5 {
+  font-size: 1.15em;
+  line-height: 1.5;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+h6 {
+  font-size: 1em;
+  line-height: 1.5;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
 
 // WordPress Core Generated Classes
 // http://codex.wordpress.org/CSS#WordPress_Generated_Classes
 
-.alignnone {
-    margin: 0.25em 1em 1em 0;
+.alignnone,
+.alignleft,
+.alignright {
+  margin: 0.25em 1em 1em 0;
+}
+
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+  margin-left: 1em;
+  margin-right: 0;
 }
 
 .aligncenter,
 div.aligncenter {
-    display: block;
-    margin: 0.25em auto 0.25em auto;
+  display: block;
+  margin: 0.25em auto 0.25em auto;
 }
 
-.alignright {
-    float:right;
-    margin: 0.25em 0 1em 1em;
-}
 
-.alignleft {
-    float: left;
-    margin: 0.25em 1em 1em 0;
-}
 
-a img.alignright {
+a img {
+
+  &.alignright,
+  &.alignnone,
+  &.alignleft {
+    margin-top: 0.25em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+  }
+
+  &.alignright {
     float: right;
-    margin: 0.25em 0 1em 1em;
-}
+    margin-left: 1em;
+    margin-right: 0;
+  }
 
-a img.alignnone {
-    margin: 0.25em 1em 1em 0;
-}
-
-a img.alignleft {
+  &.alignleft {
     float: left;
-    margin: 0.25em 1em 1em 0;
-}
+  }
 
-a img.aligncenter {
+  &.aligncenter {
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+  }
 }
+
 
 .wp-caption {
-    background: #fff;
-    border: 1px solid #f0f0f0;
-    max-width: 96%; /* Image does not overflow the content area */
-    padding: 0.25em 0.25em 0.5em;
-    text-align: center;
-}
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 96%; /* Image does not overflow the content area */
+  padding: 0.25em 0.25em 0.5em;
+  text-align: center;
 
-.wp-caption.alignnone {
-    margin: 5px 1em 1em 0;
-}
+  &.alignnone,
+  &.alignright,
+  &.alignleft {
+    margin-top: 0.25em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+  }
 
-.wp-caption.alignleft {
-    margin: 5px 1em 1em 0;
-}
+  &.alignright {
+    float: right;
+    margin-left: 1em;
+    margin-right: 0;
+  }
 
-.wp-caption.alignright {
-    margin: 5px 0 1em 1em;
-}
+  &.alighnleft {
+    float: left;
+  }
 
-.wp-caption img {
+  img {
     border: 0 none;
     height: auto;
     margin: 0;
     max-width: 98.5%;
     padding: 0;
     width: auto;
-}
+  }
 
-.wp-caption p.wp-caption-text {
-    font-size: 0.75em;
+  .wp-caption-text {
+    font-size: 0.8em;
     line-height: 1.25;
     margin: 0;
-    padding: 0 0.25em 0.25em;
+    padding: 0.25em;
+  }
 }
+
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
@@ -128,24 +177,25 @@ a img.aligncenter {
   height: 1px;
   width: 1px;
   overflow: hidden;
+
+  &:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+  }
 }
 
-.screen-reader-text:focus {
-  background-color: #f1f1f1;
-  border-radius: 3px;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-  clip: auto !important;
-  color: #21759b;
-  display: block;
-  font-size: 14px;
-  font-size: 0.875rem;
-  font-weight: bold;
-  height: auto;
-  left: 5px;
-  line-height: normal;
-  padding: 15px 23px 14px;
-  text-decoration: none;
-  top: 5px;
-  width: auto;
-  z-index: 100000; /* Above WP toolbar. */
-}
