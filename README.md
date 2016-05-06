@@ -1,6 +1,6 @@
-# _base
+# `_base`
 
-_base is a WordPress starter theme.
+`_base` is a WordPress starter theme.
 
 #### Feature List
 
@@ -12,7 +12,7 @@ _base is a WordPress starter theme.
 ## Install and develop
 
 #### 1. Clone repo
-`git clone https://github.com/martylouis/_base.git`
+`git clone https://github.com/martylouis/ _base.git`
 
 #### 2. Run `npm install`
 This will download all [Grunt](http://gruntjs.com/) package dependencies and install [Bower](http://bower.io) components. If you don't have it yet, see [how to install node](https://docs.npmjs.com/getting-started/installing-node).
@@ -49,7 +49,7 @@ Have fun!
 ### WordPress Configuration
 
 - See `lib/init.php` to setup/update navigation menus, post thumbnail sizes, post formats, and sidebars.
-- See `lib/scripts.php` to add, update or remove theme CSS and Javascripts.
+- See `lib/scripts.php` to add, update or remove theme CSS and Javascript.
 - See `lib/config.php` to enable or disable theme features and to define a Google Analytics ID.
 
 
@@ -71,4 +71,4 @@ This themes is setup to be pushed up to WP Engine. By default we ignore tracking
 
 Maintained by [Marty Thierry](http://twitter.com/martylouis).
 
-This starter theme was orginally forked from the smart guys behind [Roots](https://roots.io) and their [Roots Starter Theme](https://github.com/roots/sage/releases/tag/7.0.3).
+This starter theme was originally forked from the smart guys behind [Roots](https://roots.io) and their [Roots Starter Theme](https://github.com/roots/sage/releases/tag/7.0.3).
