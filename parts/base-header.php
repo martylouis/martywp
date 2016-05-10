@@ -5,7 +5,11 @@
   <nav class="navbar" role="navigation">
     <?php
       if (has_nav_menu('header_menu')) :
-        wp_nav_menu(array('theme_location' => 'header_menu', 'walker' => new _Base_Nav_Walker(), 'menu_class' => 'nav navbar-nav'));
+        wp_nav_menu([
+          'theme_location' => 'header_menu',
+          'walker' => new _Base_Nav_Walker(),
+          'menu_class' => 'nav navbar-nav'
+        ]);
       endif;
     ?>
   </nav>
