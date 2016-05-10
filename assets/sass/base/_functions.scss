@@ -1,9 +1,4 @@
-
-/*
- * Calculate to px to ems
- * $target-px: pixels needed to convert
- * $context: base size to convert pixels
-*/
+// Calculate to px to ems
 @function em($target-px, $context) {
   @return ($target-px / $context) * 1em;
 }

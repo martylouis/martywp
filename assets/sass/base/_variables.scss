@@ -1,12 +1,16 @@
 // Brand colors
 // -------------------------
+$black:               #000;
+$white:               #fff;
+$gray:                lighten($black, 50);
 
-$base-gray:           lighten(black, 50);
-$base-gray-dark:      lighten(black, 25);
-$base-gray-light:     lighten(black, 75);
+$base-gray:           $gray;
+$base-gray-dark:      lighten($black, 25);
+$base-gray-light:     lighten($black, 75);
 
-$base-primary:        tomato;
+$base-primary:        royalblue;
 
+$border-width:        1px;
 
 // Typography
 // -------------------------
@@ -14,7 +18,7 @@ $base-font-size:      16px;
 $base-text-color:     $base-gray-dark;
 $base-line-height:    1.625;
 
-$ff-sans:             "Helvetica Neue", Helvetica, Arial, sans-serif;
+$ff-sans:             'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-serif:            '';
 $ff-alt:              '';
 

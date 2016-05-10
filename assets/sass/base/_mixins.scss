@@ -1,22 +1,25 @@
 // Clearfix
 @mixin clearfix {
   *zoom: 1;
-  &::before, &::after {
-    content: " ";
+
+  &::before,
+  &::after {
     display: table;
+    content: ' ';
   }
+
   &::after {
     clear: both;
   }
 }
 
 // Antialias text
-@mixin antialias-text() {
-  font-synthesis: none;
-  text-rendering: geometricPrecision;
+@mixin antialias-text {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: 'liga', 'kern';
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
 // Media queries
@@ -39,8 +42,8 @@
 }
 
 // Flex Container
-@mixin flex-container( $flow: row wrap ) {
-  box-sizing: border-box;
+@mixin flex-container($flow: row wrap) {
   display: flex;
   flex-flow: $flow;
+  box-sizing: border-box;
 }
