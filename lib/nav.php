@@ -23,9 +23,13 @@ class _Base_Nav_Walker extends Walker_Nav_Menu {
     $item_html = '';
     parent::start_el($item_html, $item, $depth, $args);
 
+    $item_html = str_replace('<a', '<a class="nav-link"', $item_html);
+
     if ($item->is_dropdown && ($depth === 0)) {
-      $item_html = str_replace('<a', '<a class="dropdown-toggle" data-toggle="dropdown" data-target="#"', $item_html);
-      $item_html = str_replace('</a>', ' <b class="caret"></b></a>', $item_html);
+      $item_html = str_replace('<a', '<a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#" role="button" aria-haspopup="true" aria-expanded="false"', $item_html);
+    }
+    elseif (stristr($item_html, 'li class="has-button')) {
+      $item_html = str_replace('<a', '<a class="nav-link nav-btn btn"', $item_html);
     }
     elseif (stristr($item_html, 'li class="divider')) {
       $item_html = preg_replace('/<a[^>]*>.*?<\/a>/iU', '', $item_html);
@@ -55,10 +59,14 @@ class _Base_Nav_Walker extends Walker_Nav_Menu {
  */
 function _base_nav_menu_css_class($classes, $item) {
   $slug = sanitize_title($item->title);
-  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
+  $classes = preg_replace('/(current(-menu-|[-_]page[-_]))/', 'active-', $classes);
   $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
 
-  $classes[] = 'menu-' . $slug;
+  if ($item->menu_item_parent > 0 ) {
+    $classes[] = 'dropdown-item menu-' . $slug;
+  } else {
+    $classes[] = 'nav-item menu-' . $slug;
+  }
 
   $classes = array_unique($classes);
 
