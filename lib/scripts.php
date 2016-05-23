@@ -11,7 +11,7 @@
  * 3. /theme/assets/js/scripts.js
  *
  * Google Analytics is loaded after enqueued scripts if:
- * - An ID has been defined in config.php
+ * - An ID has been defined in wp-admin/admin.php?page=acf-options-external-services
  * - You're not logged in as an administrator
  */
 function _base_scripts() {
@@ -24,7 +24,7 @@ function _base_scripts() {
       'css'           => '/assets/css/main.css',
       'js'            => '/assets/js/scripts.js',
       'modernizr'     => '/assets/js/vendor/modernizr.min.js',
-      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.js'
+      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js'
     ];
   } else {
     $get_manifest = file_get_contents(get_template_directory() . '/assets/manifest.json');
@@ -46,7 +46,7 @@ function _base_scripts() {
    */
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', $assets['jquery'], array(), null, true);
+    wp_register_script('jquery', $assets['jquery'], array(), null, false);
     add_filter('script_loader_src', '_base_jquery_local_fallback', 10, 2);
   }
 
@@ -54,8 +54,8 @@ function _base_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, true);
   wp_enqueue_script('jquery');
+  wp_enqueue_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, true);
   wp_enqueue_script('base_js', get_template_directory_uri() . $assets['js'], array(), null, true);
 }
 add_action('wp_enqueue_scripts', '_base_scripts', 100);
