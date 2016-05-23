@@ -17,7 +17,7 @@ add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
  */
 
 function google_map_scripts() {
-  if ( function_exists(get_field) && get_field('google_maps_api_key', 'options')) :
+  if ( function_exists('get_field') && get_field('google_maps_api_key', 'options')) :
     $gmaps_api_key = get_field('google_maps_api_key', 'options');
   else :
     $gmaps_api_key = 'NO-KEY-SET';
