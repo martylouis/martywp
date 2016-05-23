@@ -39,3 +39,11 @@ function console_debug($data, $type = 'table') {
     echo("<script>console." . $type . "(".$data.");</script>");
   endif;
 }
+
+/*
+ * Sanitize Phone numbers
+ */
+function _base_sanitize_phone($phone) {
+  $san_phone = preg_replace("/[^0-9]/","",esc_attr( $phone ));
+  return $san_phone;
+}
