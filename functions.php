@@ -20,8 +20,9 @@ $_base_includes = array(
   'lib/nav.php',                        // Custom nav modifications
   'lib/gallery.php',                    // Custom [gallery] modifications
   'lib/scripts.php',                    // Scripts and stylesheets
-  'lib/extras.php',                     // Custom functions
-  'lib/acf/settings.php',               // Advanced Custom Fields Pro Settings
+  'lib/google_maps.php',                // Google Map API loader
+  'lib/post-types.php',                 // Custom Post Types includes
+  'lib/acf/settings.php',               // Advanced Custom Fields Pro settings and includes
 );
 
 foreach ($_base_includes as $file) {

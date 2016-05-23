@@ -7,7 +7,9 @@ function is_element_empty($element) {
   return !empty($element);
 }
 
-// Tell WordPress to use searchform.php from the templates/ directory
+/**
+  * Tell WordPress to use searchform.php from the templates/ directory
+  */
 function base_get_search_form() {
   $form = '';
   locate_template('/parts/form-search.php', true, false);
@@ -47,3 +49,11 @@ function _base_sanitize_phone($phone) {
   $san_phone = preg_replace("/[^0-9]/","",esc_attr( $phone ));
   return $san_phone;
 }
+
+/**
+ * Clean up the_excerpt()
+ */
+function _base_excerpt_more() {
+  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', '_base') . '</a>';
+}
+add_filter('excerpt_more', '_base_excerpt_more');
