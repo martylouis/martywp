@@ -16,7 +16,7 @@ class _Base_Nav_Walker extends Walker_Nav_Menu {
   }
 
   function start_lvl(&$output, $depth = 0, $args = array()) {
-    $output .= "\n<ul class=\"dropdown-menu\">\n";
+    $output .= "\n<ul class=\"sub-menu dropdown-menu\">\n";
   }
 
   function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
@@ -26,7 +26,7 @@ class _Base_Nav_Walker extends Walker_Nav_Menu {
     $item_html = str_replace('<a', '<a class="nav-link"', $item_html);
 
     if ($item->is_dropdown && ($depth === 0)) {
-      $item_html = str_replace('<a', '<a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#" role="button" aria-haspopup="true" aria-expanded="false"', $item_html);
+      $item_html = str_replace('</a>', '</a><a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></a>', $item_html);
     }
     elseif (stristr($item_html, 'li class="has-button')) {
       $item_html = str_replace('<a', '<a class="nav-link nav-btn btn"', $item_html);
@@ -57,22 +57,21 @@ class _Base_Nav_Walker extends Walker_Nav_Menu {
  * Remove the id="" on nav menu items
  * Return 'menu-slug' for nav menu classes
  */
-function _base_nav_menu_css_class($classes, $item) {
+function _base_nav_menu_css_class($classes, $item, $args, $depth) {
   $slug = sanitize_title($item->title);
   $classes = preg_replace('/(current(-menu-|[-_]page[-_]))/', 'active-', $classes);
   $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
 
   if ($item->menu_item_parent > 0 ) {
-    $classes[] = 'dropdown-item menu-' . $slug;
+    $classes[] = 'sub-menu-item nav-item menu-' . $slug;
   } else {
     $classes[] = 'nav-item menu-' . $slug;
   }
 
   $classes = array_unique($classes);
-
   return array_filter($classes, 'is_element_empty');
 }
-add_filter('nav_menu_css_class', '_base_nav_menu_css_class', 10, 2);
+add_filter('nav_menu_css_class', '_base_nav_menu_css_class', 10, 4);
 add_filter('nav_menu_item_id', '__return_null');
 
 /**
