@@ -19,11 +19,18 @@ module.exports = function(grunt) {
         'assets/js/_main.js',
       ]
     },
+    uglify: {
+      dist: {
+        files: {
+          'assets/js/scripts.min.js': [$js_files],
+        }
+      }
+    },
     sass: {
       options: {
-        // includePaths: [
-        //   'node_modules/bootstrap',
-        // ],
+        includePaths: [
+          'node_modules/bootstrap-sass/assets/stylesheets/',
+        ],
         sourceMap: true
       },
       dist: {
@@ -51,13 +58,6 @@ module.exports = function(grunt) {
         options: {
           // keepBreaks: true,
           keepSpecialComments: 0
-        }
-      }
-    },
-    uglify: {
-      dist: {
-        files: {
-          'assets/js/scripts.min.js': [$js_files],
         }
       }
     },

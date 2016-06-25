@@ -35,10 +35,10 @@ add_filter('body_class', 'base_body_class');
  * Debug code in Javascript console
  */
 function console_debug($data, $type = 'table') {
-  if(is_array($data) || is_object($data)) :
-      echo("<script>console." . $type . "(".json_encode($data).");</script>");
+  if( is_array($data) || is_object($data) ) :
+    echo('<script>console.' . $type . '('. json_encode($data) .');</script>');
   else :
-    echo("<script>console." . $type . "(".$data.");</script>");
+    echo('<script>console.' . $type . '(' . $data. ');</script>');
   endif;
 }
 
