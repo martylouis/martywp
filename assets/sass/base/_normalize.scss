@@ -324,6 +324,10 @@ img {
 
 svg:not(:root) {
   overflow: hidden;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
 }
 
 /* Grouping content
