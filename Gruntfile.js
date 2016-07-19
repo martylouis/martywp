@@ -29,7 +29,8 @@ module.exports = function(grunt) {
     sass: {
       options: {
         includePaths: [
-          'node_modules/bootstrap-sass/assets/stylesheets/',
+          'node_modules/normalize.scss/',
+          // 'node_modules/bootstrap-sass/assets/stylesheets/',
         ],
         sourceMap: true
       },
@@ -93,6 +94,30 @@ module.exports = function(grunt) {
     clean: {
       src: ["assets/css/main*", "assets/js/scripts.js"]
     },
+    svgstore: {
+      options: {
+        cleanup: ['fill', 'stroke', 'id', 'stroke-width', 'fill-rule', 'title'],
+        cleanupdefs: true,
+        includeTitleElement: false,
+        preserveDescElement: false,
+        prefix : 'icon-',
+        svg: {
+          style: 'position: absolute; width: 0; height: 0;',
+          xmlns: 'http://www.w3.org/2000/svg'
+        }
+      },
+      dev: {
+        options: {
+          formatting: {
+            indent_size: 2
+          }
+        },
+        files: { 'lib/svg.php': ['assets/svg/*.svg'] }
+      },
+      build: {
+        files: { 'lib/svg.php': ['assets/svg/*.svg'] }
+      }
+    },
     version: {
       default: {
         options: {
@@ -114,7 +139,7 @@ module.exports = function(grunt) {
         files: [
           'assets/sass/**/*.scss'
         ],
-        tasks: ['sass', 'autoprefixer:dev']
+        tasks: ['sass', 'autoprefixer:dev', 'svgstore:dev']
       },
       js: {
         files: [
@@ -161,7 +186,8 @@ module.exports = function(grunt) {
     'sass',
     'autoprefixer:dev',
     'concat',
-    'modernizr'
+    'modernizr',
+    'svgstore:dev'
   ]);
   grunt.registerTask('build', [
     'clean',
@@ -172,6 +198,7 @@ module.exports = function(grunt) {
     'cssmin',
     'uglify',
     'modernizr',
+    'svgstore:build',
     'version'
   ]);
 };

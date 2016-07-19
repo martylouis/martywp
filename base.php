@@ -1,6 +1,7 @@
 <?php
   get_template_part('parts/base', 'head');
   do_action('get_header');
+  get_template_part('lib/svg');
   get_template_part('parts/base', 'header');
 
   include _base_template_path();

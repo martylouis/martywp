@@ -42,6 +42,7 @@ endif;
 
 $acf_fields = array(
   'lib/acf/fields/options.php',
+  'lib/acf/fields/icons.php',
 );
 
 foreach ($acf_fields as $file) {

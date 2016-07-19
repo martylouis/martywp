@@ -1,0 +1,28 @@
+// Icons
+
+svg {
+  width: 100%;
+  height: 100%;
+  // box-sizing: border-box;
+  fill: currentColor;
+}
+
+.icon {
+  display: inline-block;
+  line-height: 0;
+  fill: currentColor;
+}
+
+// Social Icons
+.social-links {
+  margin: 0;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .icon + .icon {
+    margin-left: 0.5em;
+  }
+}
