@@ -5,14 +5,13 @@
 #### Feature List
 
 - [Grunt](http://gruntjs.com)
-- [Bower](http://bower.io)
-- [Sass](http://sass-lang.com/) w/ minimal default styles.
+- [Sass](http://sass-lang.com/) w/ minimal default styles and normalizer.
 - [BrowserSync](http://www.browsersync.io/)
 
 ## Install and develop
 
 #### 1. Clone repo
-`git clone https://github.com/martylouis/ _base.git`
+`git clone https://github.com/martylouis/_base.git themename`
 
 #### 2. Run `npm install`
 This will download all [Grunt](http://gruntjs.com/) package dependencies and install [Bower](http://bower.io) components. If you don't have it yet, see [how to install node](https://docs.npmjs.com/getting-started/installing-node).
@@ -61,7 +60,7 @@ Have fun!
 
 Review `Grunfile.js` to familiarize yourself with the setup.
 
-### WP ENGINE Ready
+### WP ENGINE
 
 This themes is setup to be pushed up to WP Engine. By default we ignore tracking theme compiled files, `assets/css/main.css`, `assets/css/main.css.map`, and `assets/js/scripts.js`.
 
