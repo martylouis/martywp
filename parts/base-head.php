@@ -8,7 +8,7 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<!--[if lt IE 9]>
+<!--[if lt IE 11]>
   <div class="browser-warning">
     You are using an <strong>outdated</strong> browser. Please <a href="<?php echo esc_url('http://browsehappy.com/') ?>">upgrade your browser</a> to improve your experience.
   </div>
