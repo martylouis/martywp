@@ -1,15 +1,15 @@
-@import 'bootstrap/variables';
-@import 'bootstrap/mixins';
-@import 'bootstrap/normalize';
+// main.scss
+// @import 'bootstrap';
 
 // Base
-// @import 'base/functions';
-// @import 'base/variables';
-// @import 'base/mixins';
-// @import 'base/normalize';
-// @import 'base/type';
+@import 'normalize';
+@import 'base/functions';
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/type';
 
 // Patterns
+@import 'patterns/icons';
 
 // Layouts
 // @import 'layouts/page';
