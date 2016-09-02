@@ -9,9 +9,6 @@
     "type": "git",
     "url": "https://github.com/martylouis/_base.git"
   },
-  "scripts": {
-    "postinstall": "grunt build"
-  },
   "engines": {
     "node": ">= 0.10.0"
   },
