@@ -1,6 +1,6 @@
-# `_base`
+# _base
 
-`_base` is a WordPress starter theme.
+Super bare bones WordPress starter theme.
 
 #### Feature List
 
@@ -8,51 +8,20 @@
 - [Sass](http://sass-lang.com/) w/ minimal default styles and normalizer.
 - [BrowserSync](http://www.browsersync.io/)
 
-## Install and develop
+#### Setup
+1. Add `define('WP_ENV', 'development');` to your `wp-config.php`.
+- `git clone https://github.com/martylouis/_base.git themename`
+- `npm install`
+- Add your [local WP dev host to Gruntfile.js](http://www.browsersync.io/docs/grunt/#grunt-proxy).
 
-#### 1. Clone repo
-`git clone https://github.com/martylouis/_base.git themename`
-
-#### 2. Run `npm install`
-This will download all [Grunt](http://gruntjs.com/) package dependencies and install [Bower](http://bower.io) components. If you don't have it yet, see [how to install node](https://docs.npmjs.com/getting-started/installing-node).
-
-#### 3. Define your local development
-Add `define('WP_ENV', 'development');` to `wp-config.php`.
-
-#### 4. Update BrowserSync [proxy](http://www.browsersync.io/docs/grunt/#grunt-proxy)
-Point the proxy to your WP install host address.
-
-```js
-  // Gruntfile.js
-  browserSync: {
-    dev: {
-      bsFiles: {
-        src: [
-          'assets/css/main.css',
-          'assets/js/**/*.js',
-          '**/*.php'
-        ]
-      },
-      options: {
-        watchTask: true,
-        proxy: "wp.dev", // Update to match your local host address
-        notify: false
-      }
-    }
-  }
-```
-
-#### 5. Run `grunt serve`
-Have fun!
-
-### WordPress Configuration
+#### WordPress Configuration
 
 - See `lib/init.php` to setup/update navigation menus, post thumbnail sizes, post formats, and sidebars.
 - See `lib/scripts.php` to add, update or remove theme CSS and Javascript.
 - See `lib/config.php` to enable or disable theme features and to define a Google Analytics ID.
 
 
-### Grunt commands
+#### Grunt commands
 
 * `grunt serve` — BrowserSync and live compiling of Sass to CSS and JS concatenating and validating
 * `grunt dev` — Compile Sass to CSS, concatenate and validate JS
@@ -60,11 +29,9 @@ Have fun!
 
 Review `Grunfile.js` to familiarize yourself with the setup.
 
-### WP ENGINE
+#### Working files
 
-This themes is setup to be pushed up to WP Engine. By default we ignore tracking theme compiled files, `assets/css/main.css`, `assets/css/main.css.map`, and `assets/js/scripts.js`.
-
-[See WP Engine's documentation](http://wpengine.com/git/) for setting up your local WP install to push up to WP Engine production and staging.
+By default we ignore tracking theme compiled files, `assets/css/main.css`, `assets/css/main.css.map`, and `assets/js/scripts.js`.
 
 ------
 
