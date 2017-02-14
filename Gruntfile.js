@@ -5,9 +5,9 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var $js_files = [
-        'assets/js/plugins/*.js',
-        'assets/js/_*.js'
-      ];
+    'assets/js/plugins/*.js',
+    'assets/js/_*.js'
+  ];
 
   grunt.initConfig({
     jshint: {
@@ -29,8 +29,8 @@ module.exports = function(grunt) {
     sass: {
       options: {
         includePaths: [
-          'node_modules/normalize.scss/',
-          // 'node_modules/bootstrap-sass/assets/stylesheets/',
+          'node_modules/normalize-scss/sass/',
+          'node_modules/basscss-sass/scss/'
         ],
         sourceMap: true
       },
@@ -164,7 +164,7 @@ module.exports = function(grunt) {
         },
         options: {
           watchTask: true,
-          proxy: "wp.dev", // Update to match your local host address
+          proxy: "base.dev", // Update to match your local host address
           notify: false
         }
       }

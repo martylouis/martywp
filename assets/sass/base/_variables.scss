@@ -26,9 +26,7 @@ $base-font-family:    $ff-sans;
 
 // Breakpoints
 // -------------------------
-$base-breakpoints: (
-  sm: 480px,
-  md: 768px,
-  lg: 960px,
-  xl: 1280px,
-);
+$sm: 480px;
+$md: 768px;
+$lg: 960px;
+$xl: 1280px;

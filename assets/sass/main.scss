@@ -1,15 +1,28 @@
 // main.scss
 // @import 'bootstrap';
 
+// Normalize »
+@import 'normalize/import-now';
+
 // Base
-@import 'normalize';
 @import 'base/functions';
 @import 'base/variables';
 @import 'base/mixins';
 @import 'base/type';
+@import 'base/icons';
 
-// Patterns
-@import 'patterns/icons';
+// BassCSS » http://basscss.com/#getting-started
+@import 'type-scale';
+@import 'typography';
+@import 'layout';
+@import 'align';
+@import 'margin';
+@import 'padding';
+@import 'grid';
+@import 'flexbox';
+@import 'position';
+@import 'border';
+@import 'hide';
 
-// Layouts
-// @import 'layouts/page';
+// Components
+@import 'components/nav';
