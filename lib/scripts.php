@@ -1,19 +1,5 @@
 <?php
-/**
- * Scripts and stylesheets
- *
- * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/main.css
- *
- * Enqueue scripts in the following order:
- * 1. jquery-2.2.4.min.js via Google CDN
- * 2. /theme/assets/js/vendor/modernizr.min.js
- * 3. /theme/assets/js/scripts.js
- *
- * Google Analytics is loaded after enqueued scripts if:
- * - An ID has been defined in wp-admin/admin.php?page=acf-options-external-services
- * - You're not logged in as an administrator
- */
+
 function _base_scripts() {
   /**
    * The build task in Grunt renames production assets with a hash
@@ -24,7 +10,7 @@ function _base_scripts() {
       'css'           => '/assets/css/main.css',
       'js'            => '/assets/js/scripts.js',
       'modernizr'     => '/assets/js/vendor/modernizr.min.js',
-      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+      'jquery'        => 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'
     ];
   } else {
     $get_manifest = file_get_contents(get_template_directory() . '/assets/manifest.json');
@@ -33,7 +19,7 @@ function _base_scripts() {
       'css'           => '/assets/css/main.min.css?' . $manifest['assets/css/main.min.css']['hash'],
       'js'            => '/assets/js/scripts.min.js?' . $manifest['assets/js/scripts.min.js']['hash'],
       'modernizr'     => '/assets/js/vendor/modernizr.min.js',
-      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'
     ];
   }
 
