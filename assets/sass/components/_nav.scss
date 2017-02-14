@@ -1,13 +1,5 @@
 // Nav
 
-.nav {}
-
-.nav-item {}
-
 .nav-link {
-
-  @include media-min($md) {
-    padding-left: 1em;
-  }
-
+  padding-left: 1em;
 }
