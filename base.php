@@ -4,7 +4,7 @@
   get_template_part('lib/svg');
   get_template_part('parts/base', 'header');
 ?>
-  <main class="main max-width-4 mx-auto clearfix">
+  <main class="main max-width-4 mx-auto px3 clearfix">
   <?php include _base_template_path();
 
   if ( _base_display_sidebar() ) :

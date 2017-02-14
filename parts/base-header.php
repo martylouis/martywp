@@ -1,4 +1,4 @@
-<header class="header p3 flex justify-between" role="banner">
+<header class="header max-width-4 mx-auto p3 flex justify-between" role="banner">
   <div class="header-brand">
     <a class="header-logo" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
   </div>
