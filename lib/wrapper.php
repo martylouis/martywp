@@ -10,7 +10,7 @@ function _base_template_path() {
 }
 
 function _Base_Sidebar_path() {
-  return new _Base_Wrapping('parts/sidebar.php');
+  return new _Base_Wrapping('parts/sidebar/base.php');
 }
 
 class _Base_Wrapping {
