@@ -1,11 +1,23 @@
 <?php
+
 /**
- * _base initial setup and constants
+ * Set Working Environment
+ */
+if (!defined('WP_ENV')) {
+  define('WP_ENV', 'production');
+}
+
+
+/**
+ * _base Theme setup
  */
 function _base_setup() {
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/roots-translations
   load_theme_textdomain('_base', get_template_directory() . '/lang');
+
+  // Add default posts and comments RSS feed links to head.
+  add_theme_support( 'automatic-feed-links' );
 
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
@@ -14,7 +26,8 @@ function _base_setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
-    'header_menu' => __('Header Menu', '_base')
+    'header_menu' => __('Header Menu', '_base'),
+    'footer_menu' => __('Footer Menu', '_base')
   ));
 
   // Add post thumbnails
@@ -27,38 +40,22 @@ function _base_setup() {
   // http://codex.wordpress.org/Post_Formats
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
 
-  // Add HTML5 markup for captions
-  // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
-  add_theme_support('html5', array('caption', 'comment-form', 'comment-list'));
+  //    Switch default core markup for search form, comment form, and comments to output valid HTML5.
+  add_theme_support( 'html5', array('comment-form', 'comment-list', 'gallery', 'caption', ));
+
+  // Enable to load jQuery from the Google CDN
+  add_theme_support('jquery-cdn');
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/assets/css/editor-style.css');
+
+  // add_theme_support('soil-clean-up');         // Enable clean up from Soil
+  // add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
+  // add_theme_support('soil-nice-search');      // Enable /?s= to /search/ redirect from Soil
+  // add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 }
 add_action('after_setup_theme', '_base_setup');
 
-/**
- * Register sidebars
- */
-function _base_widgets_init() {
-  register_sidebar(array(
-    'name'          => __('Primary', '_base'),
-    'id'            => 'sidebar-primary',
-    'before_widget' => '<section class="widget %1$s %2$s">',
-    'after_widget'  => '</section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>',
-  ));
-
-  register_sidebar(array(
-    'name'          => __('Footer', '_base'),
-    'id'            => 'sidebar-footer',
-    'before_widget' => '<section class="widget %1$s %2$s">',
-    'after_widget'  => '</section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>',
-  ));
-}
-add_action('widgets_init', '_base_widgets_init');
 
 
 /**

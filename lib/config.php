@@ -1,30 +1,30 @@
 <?php
-/**
- * Enable theme features
- */
-// add_theme_support('soil-clean-up');         // Enable clean up from Soil
-// add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
-// add_theme_support('soil-nice-search');      // Enable /?s= to /search/ redirect from Soil
-// add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
-add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
- * Configuration values
+ * Setup Widgets
  */
-if (!defined('WP_ENV')) {
-  define('WP_ENV', 'production');  // scripts.php checks for values 'production' or 'development'
-}
+function _base_widgets_init() {
+  register_sidebar(array(
+    'name'          => __('Primary', '_base'),
+    'id'            => 'widget-primary',
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
 
-/**
- * Add body class if sidebar is active
- */
-function _Base_Sidebar_body_class($classes) {
-  if (_base_display_sidebar()) {
-    $classes[] = 'sidebar-primary';
-  }
-  return $classes;
+  register_sidebar(array(
+    'name'          => __('Secondary', '_base'),
+    'id'            => 'widget-secondary',
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
 }
-add_filter('body_class', '_Base_Sidebar_body_class');
+add_action('widgets_init', '_base_widgets_init');
+
+
 
 /**
  * Define which pages shouldn't have the sidebar
@@ -41,7 +41,6 @@ function _base_display_sidebar() {
        * Any of these conditional tags that return true won't show the sidebar
        *
        * To use a function that accepts arguments, use the following format:
-       *
        * array('function_name', array('arg1', 'arg2'))
        *
        * The second element must be an array even if there's only 1 argument.
@@ -63,12 +62,3 @@ function _base_display_sidebar() {
 
   return $display;
 }
-
-/**
- * $content_width is a global variable used by WordPress for max image upload sizes
- * and media embeds (in pixels).
- *
- * Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
- * Default: 1140px is the default Bootstrap container width.
- */
-if (!isset($content_width)) { $content_width = 1140; }

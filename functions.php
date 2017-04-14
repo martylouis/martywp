@@ -26,9 +26,10 @@ array_map(function($file) use ($_base_error) {
   }
 }, [
   'lib/helpers',
-  'lib/activation',
   'lib/setup',
   'lib/config',
+  'lib/filters',
+  'lib/activation',
   'lib/wrapper',
   'lib/sidebar',
   'lib/nav',

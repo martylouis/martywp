@@ -7,7 +7,8 @@ function add_defer_attribute($tag, $handle) {
         return $tag;
     return str_replace( ' src', ' defer src', $tag );
 }
-add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+
+// add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
 
 /**
@@ -35,4 +36,4 @@ function google_map_scripts() {
   endif;
 }
 
-add_action('wp_enqueue_scripts', 'google_map_scripts', 100);
+// add_action('wp_enqueue_scripts', 'google_map_scripts');
