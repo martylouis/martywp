@@ -1,7 +1,7 @@
 <?php
   get_template_part('parts/base', 'head');
   do_action('get_header');
-  get_template_part('lib/svg');
+  get_template_part('parts/svg');
   get_template_part('parts/base', 'header');
 ?>
   <main class="main max-width-4 mx-auto px3 clearfix">
