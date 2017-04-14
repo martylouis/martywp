@@ -112,10 +112,10 @@ module.exports = function(grunt) {
             indent_size: 2
           }
         },
-        files: { 'lib/svg.php': ['assets/svg/*.svg'] }
+        files: { 'parts/svg.php': ['assets/svg/*.svg'] }
       },
       build: {
-        files: { 'lib/svg.php': ['assets/svg/*.svg'] }
+        files: { 'parts/svg.php': ['assets/svg/*.svg'] }
       }
     },
     version: {
