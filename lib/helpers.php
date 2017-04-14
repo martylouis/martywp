@@ -3,7 +3,7 @@
 /**
  * Debug code in Javascript console
  */
-function console_debug($data, $type = 'table') {
+function console_debug($data, $type = 'log') {
   if( is_array($data) || is_object($data) ) :
     echo '<script>console.' . $type . '('. json_encode($data) .')</script>';
   else :
@@ -49,4 +49,16 @@ function _base_title() {
   } else {
     return get_the_title();
   }
+}
+
+
+/**
+ * Post and Page thumbnails
+ */
+function _base_thumb($post, $size, $link = false ) {
+  if ( has_post_thumbnail() && $link = false ) :
+    the_post_thumbnail($size);
+  elseif ( has_post_thumbnail() ) :
+    printf('<a href="%1$s">%2$s</a>', esc_url(get_the_permalink($post)), get_the_post_thumbnail($post, $size));
+  endif;
 }
