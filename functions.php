@@ -1,35 +1,46 @@
 <?php
+
 /**
- * _base includes
- *
- * The $_base_includes array determines the code library included in your theme.
- * Add or remove files to the array as needed. Supports child theme overrides.
- *
- * Please note that missing files will produce a fatal error.
- *
- * @link https://github.com/roots/roots/pull/1042
+ * Helper function to pretty up the errors
+ * @param string $message
+ * @param string $subtitle
+ * @param string $title
  */
-$_base_includes = array(
-  'lib/utils.php',                      // Utility functions
-  'lib/init.php',                       // Initial theme setup and constants
-  'lib/wrapper.php',                    // Theme wrapper class
-  'lib/sidebar.php',                    // Sidebar class
-  'lib/config.php',                     // Configuration
-  'lib/activation.php',                 // Theme activation
-  'lib/titles.php',                     // Page titles
-  'lib/nav.php',                        // Custom nav modifications
-  'lib/gallery.php',                    // Custom [gallery] modifications
-  'lib/scripts.php',                    // Scripts and stylesheets
-  'lib/google_maps.php',                // Google Map API loader
-  'lib/post-types.php',                 // Custom Post Types includes
-  'lib/acf/settings.php',               // Advanced Custom Fields Pro settings and includes
-);
 
-foreach ($_base_includes as $file) {
-  if (!$filepath = locate_template($file)) {
-    trigger_error(sprintf(__('Error locating %s for inclusion', '_base'), $file), E_USER_ERROR);
+$_base_error = function($message, $subtitle = '', $title = '') {
+  $title = $title ?: __('<span style="color:orangered">Error!</span>', '_base');
+  $message = "<h1>{$title}</h1><h3>{$subtitle}</span></h3><p>$message</p>";
+  wp_die($message, $title);
+};
+
+/**
+ * _base Required Files
+ *
+ * The map array determines the code library included in this theme.
+ * Add or remove files as needed.
+ */
+array_map(function($file) use ($_base_error) {
+  $file = "{$file}.php";
+  if (!locate_template($file, true, true)) {
+    $_base_error(sprintf(__('Error locating <code>%s</code>', '_base'), $file), 'File not found');
   }
+}, [
+  'lib/helpers',
+  'lib/activation',
+  'lib/setup',
+  'lib/config',
+  'lib/wrapper',
+  'lib/sidebar',
+  'lib/nav',
+  'lib/scripts',
 
-  require_once $filepath;
-}
-unset($file, $filepath);
+  // ACF
+  'fields/acf',
+
+  // Post Types
+  // 'post-types/',
+
+  // Components
+  // 'components/gallery',
+  'components/google_maps'
+]);
