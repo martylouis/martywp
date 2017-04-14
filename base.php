@@ -8,7 +8,7 @@
   <?php include _base_template_path();
 
   if ( _base_display_sidebar() ) :
-    include _Base_Sidebar_path();
+    include _base_Sidebar_path();
   endif;
   ?>
   </main>
