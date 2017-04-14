@@ -1,1 +1,1 @@
-<?php get_template_part('parts/page', 'content'); ?>
+<?php get_template_part('parts/page/content'); ?>

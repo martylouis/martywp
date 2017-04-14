@@ -1,4 +1,4 @@
-<?php get_template_part('parts/page', 'header'); ?>
+<?php get_template_part('parts/page/header'); ?>
 <div class="alert">
   <?php _e('Sorry, but the page you were trying to view does not exist.', '_base'); ?>
 </div>

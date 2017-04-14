@@ -1,4 +1,4 @@
-<div class="post-thumb">
+<div class="page-thumb">
   <?php if ( has_post_thumbnail() && is_single() ) : ?>
     <?php the_post_thumbnail('medium'); ?>
   <?php elseif ( has_post_thumbnail() ) : ?>
