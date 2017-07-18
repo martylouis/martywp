@@ -10,7 +10,7 @@ function _base_scripts() {
       'css'           => '/assets/css/main.css',
       'js'            => '/assets/js/scripts.js',
       'modernizr'     => '/assets/js/vendor/modernizr.min.js',
-      'jquery'        => 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+      'jquery'        => 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
     ];
   } else {
     $get_manifest = file_get_contents(get_template_directory() . '/assets/manifest.json');
@@ -19,7 +19,7 @@ function _base_scripts() {
       'css'           => '/assets/css/main.min.css?' . $manifest['assets/css/main.min.css']['hash'],
       'js'            => '/assets/js/scripts.min.js?' . $manifest['assets/js/scripts.min.js']['hash'],
       'modernizr'     => '/assets/js/vendor/modernizr.min.js',
-      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+      'jquery'        => '//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
     ];
   }
 
