@@ -23,7 +23,35 @@ var _base = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+
+      // FITVIDS
+      fitvids();
+
+      // MMENU
+      // http://mmenu.frebsite.nl/documentation/core/options.html
+      $('#header_menu').mmenu({
+        'offCanvas': {
+          'position': 'right',
+          'zposition': 'front'
+        }
+      }, {
+        classNames: {
+          selected: "active-item",
+        },
+        clone: true
+      });
+
+      var $mmenu = $('#mm-header_menu').data("mmenu");
+
+      $('.header-menu-toggle').click(function() {
+        $mmenu.open();
+      });
+
+      $('.header-menu-close').click(function() {
+        $mmenu.close();
+      });
     }
+
   },
   // Home page
   home: {
