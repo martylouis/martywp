@@ -1,22 +1,9 @@
 <?php
 
 /**
- * Add body class if sidebar is active
- */
-function _base_sidebar_body_class($classes) {
-  if (_base_display_sidebar()) {
-    $classes[] = 'sidebar-primary';
-  }
-  return $classes;
-}
-add_filter('body_class', '_base_sidebar_body_class');
-
-
-
-/**
  * Add page slug to body_class() classes if it doesn't exist
  */
-function base_body_class($classes) {
+function _base_body_class($classes) {
   // Add post/page slug
   if (is_single() || is_page() && !is_front_page()) {
     if (!in_array(basename(get_permalink()), $classes)) {
@@ -25,26 +12,57 @@ function base_body_class($classes) {
   }
   return $classes;
 }
-add_filter('body_class', 'base_body_class');
-
+add_filter('body_class', '_base_body_class');
 
 
 
 /**
   * Tell WordPress to use searchform.php from the parts directory
   */
-function base_get_search_form() {
+function _base_get_search_form() {
   $form = '';
   locate_template('/parts/form-search.php', true, false);
   return $form;
 }
-add_filter('get_search_form', 'base_get_search_form');
+add_filter('get_search_form', '_base_get_search_form');
 
 
 /**
  * Clean up the_excerpt()
  */
 function _base_excerpt_more() {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', '_base') . '</a>';
+  return sprintf(__(' &hellip; <div class="post-read-more"><a href="%s">Read More &rarr;</a></div>'), get_permalink());
 }
 add_filter('excerpt_more', '_base_excerpt_more');
+
+
+
+/**
+ * Update the_excerpt() lenth
+ */
+function _base_excerpt_length($length) {
+  return 40;
+}
+add_filter('excerpt_length', '_base_excerpt_length', 999);
+
+
+
+/**
+ * Modify Archive/Category Titles
+ */
+function _base_archive_title($title) {
+  if (is_category()) {
+    $title = single_cat_title('', false);
+  } elseif (is_tag()) {
+    $title = single_tag_title('', false);
+  } elseif (is_author()) {
+    $title = sprintf(__('<span class="author">Posts by %s</span>', '_base'), get_the_author());
+  } elseif (is_post_type_archive()) {
+    $title = post_type_archive_title('', false);
+  } elseif (is_tax()) {
+    $title = single_term_title('', false);
+  }
+
+  return $title;
+}
+add_filter('get_the_archive_title', '_base_archive_title');

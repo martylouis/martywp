@@ -1,15 +1,7 @@
 <?php
 
 /**
- * Set Working Environment
- */
-if (!defined('WP_ENV')) {
-  define('WP_ENV', 'production');
-}
-
-
-/**
- * _base Theme setup
+ * Base Theme setup
  */
 function _base_setup() {
   // Make theme available for translation
@@ -27,6 +19,7 @@ function _base_setup() {
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
     'header_menu' => __('Header Menu', '_base'),
+    'blog_menu' => __('Blog Menu', '_base'),
     'footer_menu' => __('Footer Menu', '_base')
   ));
 
@@ -35,6 +28,8 @@ function _base_setup() {
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
+  add_image_size('featured_img', 1200, 1200, false);
+  add_image_size('featured_img_thumb', 600, 600, false);
 
   // Add post formats
   // http://codex.wordpress.org/Post_Formats
@@ -56,6 +51,30 @@ function _base_setup() {
 }
 add_action('after_setup_theme', '_base_setup');
 
+
+/**
+ * Setup Widgets
+ */
+function _base_widgets_init() {
+  register_sidebar(array(
+    'name'          => __('Primary', '_base'),
+    'id'            => 'sidebar-primary',
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3 class="widget-heading">',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Secondary', '_base'),
+    'id'            => 'sidebar-secondary',
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3 class="widget-heading">',
+    'after_title'   => '</h3>',
+  ));
+}
+add_action('widgets_init', '_base_widgets_init');
 
 
 /**

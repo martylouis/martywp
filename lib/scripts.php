@@ -46,6 +46,8 @@ function _base_scripts() {
 }
 add_action('wp_enqueue_scripts', '_base_scripts', 100);
 
+
+
 // http://wordpress.stackexchange.com/a/12450
 function _base_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
@@ -62,6 +64,8 @@ function _base_jquery_local_fallback($src, $handle = null) {
   return $src;
 }
 add_action('wp_head', '_base_jquery_local_fallback');
+
+
 
 /**
  * Google Analytics snippet from HTML5 Boilerplate

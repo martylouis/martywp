@@ -3,12 +3,15 @@
 /**
  * Debug code in Javascript console
  */
-function console_debug($data, $type = 'log') {
+function debug($data, $type = 'log') {
+  $debug = '';
   if( is_array($data) || is_object($data) ) :
-    echo '<script>console.' . $type . '('. json_encode($data) .')</script>';
+    $debug = sprintf('<script>console.%1$s(%2$s)</script>', $type, json_encode($data));
   else :
-    echo '<script>console.' . $type . '("' . $data. '");</script>';
+    $debug = sprintf('<script>console.%1$s("%2$s")</script>', $type, $data);
   endif;
+
+  echo $debug;
 }
 
 
@@ -51,7 +54,6 @@ function _base_title() {
   }
 }
 
-
 /**
  * Post and Page thumbnails
  */
@@ -59,6 +61,19 @@ function _base_thumb($post, $size, $link = false ) {
   if ( has_post_thumbnail() && $link = false ) :
     the_post_thumbnail($size);
   elseif ( has_post_thumbnail() ) :
-    printf('<a href="%1$s">%2$s</a>', esc_url(get_the_permalink($post)), get_the_post_thumbnail($post, $size));
+    printf('<a itemprop="url" href="%1$s">%2$s</a>', esc_url(get_the_permalink($post)), get_the_post_thumbnail($post, $size));
   endif;
 }
+
+
+/**
+ * Update jetpack sharing
+ */
+function jptweak_remove_share() {
+    remove_filter( 'the_content', 'sharing_display', 19 );
+    remove_filter( 'the_excerpt', 'sharing_display', 19 );
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+      remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+    }
+}
+add_action( 'loop_start', 'jptweak_remove_share' );
