@@ -1,13 +1,17 @@
 <?php  while (have_posts()) : the_post(); ?>
-
-  <div class="page-thumb">
-    <?php _base_thumb( $post->ID, 'medium'); ?>
-  </div>
-
-  <header class="page-header">
-    <h1 class="page-title"><?php echo _base_title(); ?></h1>
-  </header>
-
-  <div class="content"><?php the_content(); ?></div>
-
+  <?php get_template_part('parts/page/header'); ?>
+  <section class="page-section">
+    <div class="container">
+      <div class="clearfix mxn2">
+        <div class="col md-col-8 px2">
+            <article <?php post_class('post-article'); ?>>
+              <?php the_content(); ?>
+            </article>
+        </div>
+        <div class="col md-col-4 px2">
+          <?php get_template_part('parts/sidebar/primary'); ?>
+        </div>
+      </div>
+    </div>
+  </section>
 <?php endwhile; ?>

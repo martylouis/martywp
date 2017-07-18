@@ -1,16 +1,23 @@
-<header class="header max-width-4 mx-auto p3 flex justify-between" role="banner">
-  <div class="header-brand">
-    <a class="header-logo" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+<?php get_template_part('parts/site/head'); ?>
+<header id="top" class="site-header" role="banner">
+  <div class="container">
+    <div class="header-brand">
+      <a class="header-logo" href="<?php echo esc_url(home_url('/')); ?>">
+        <span class="logo-text"><?php bloginfo('name'); ?></span>
+      </a>
+    </div>
+    <nav id="header_menu" class="header-menu" role="navigation">
+      <?php
+        if (has_nav_menu('header_menu')) :
+          wp_nav_menu([
+            'theme_location' => 'header_menu',
+            'walker' => new _Base_Nav_Walker(),
+            'menu_class' => 'nav list-reset mm-nolistview',
+          ]);
+        endif;
+      ?>
+      <button class="header-menu-close">&times;</button>
+    </nav>
+    <button class="header-menu-toggle">&#x2630;</button>
   </div>
-  <nav class="header-nav" role="navigation">
-    <?php
-      if (has_nav_menu('header_menu')) :
-        wp_nav_menu([
-          'theme_location' => 'header_menu',
-          'walker' => new _Base_Nav_Walker(),
-          'menu_class' => 'nav m0 flex list-reset'
-        ]);
-      endif;
-    ?>
-  </nav>
 </header>
