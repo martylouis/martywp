@@ -47,3 +47,12 @@
   flex-flow: $flow;
   box-sizing: border-box;
 }
+
+
+// hover/focus
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}

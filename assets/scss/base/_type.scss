@@ -1,11 +1,18 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
 html {
   font-size: $base-font-size;
 
-  @media screen and (min-width: 480px) {
+  @include media-min($md) {
     font-size: ($base-font-size + 0.5);
   }
 
-  @media screen and (min-width: 768px) {
+  @include media-min($lg) {
     font-size: ($base-font-size + 1);
   }
 }
@@ -19,21 +26,87 @@ button {
 }
 
 body {
-  color: $base-text-color;
+  color: $text-color;
   font-family: $base-font-family;
   font-size: 100%;
   line-height: $base-line-height;
 }
 
 a {
-  color: $base-primary;
+  color: $link-color;
+  text-decoration: none;
+  transition: all 0.1s linear;
 }
 
-p {
+p, pre, table, ul {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+blockquote {
+  margin: 1em 0 1.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-size: 1.05em;
+  font-style: italic;
+  position: relative;
+  color: lighten($text-color, 30);
+
+  p:first-child::before {
+    content: '\201c ';
+    position: absolute;
+    left: 10px;
+    line-height: 1;
+    font-size: 36px;
+  }
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: 1.15em
+}
+
+h6 {
+  font-size: 1em;
+}
+
+
+h1, h2, h3 {
+  line-height: 1.25;
+  margin: 0.5em 0;
+}
+
+h4, h5, h6 {
+  margin: 0 0 0.5em;
+}
+
+hr {
   margin-top: 1em;
   margin-bottom: 1em;
+  border-top: 3px solid $gray-light;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
 }
 
+iframe {
+  width: 100%;
+}
 
 // Text Utils
 // --------------------------
@@ -105,7 +178,7 @@ p {
 .wp-caption {
   max-width: 96%; // Image does not overflow the content area
   padding: 0.25em 0.25em 0.5em;
-  border: 1px solid $base-gray-light;
+  border: 1px solid $gray-light;
   background: $white;
   text-align: center;
 
@@ -135,22 +208,4 @@ p {
   height: 1px;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
-
-  &:focus {
-    display: block;
-    top: 5px;
-    left: 5px;
-    width: auto;
-    height: auto;
-    padding: 15px 23px 14px;
-    border-radius: 3px;
-    background-color: $base-gray-light;
-    color: $base-primary;
-    font-size: 0.875rem;
-    font-weight: bold;
-    line-height: normal;
-    text-decoration: none;
-    z-index: 100000; // Above WP toolbar.
-    clip: auto;
-  }
 }

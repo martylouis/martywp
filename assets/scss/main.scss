@@ -1,5 +1,4 @@
 // main.scss
-// @import 'bootstrap';
 
 // Normalize »
 @import 'normalize/import-now';
@@ -11,6 +10,7 @@
 @import 'base/type';
 @import 'base/icons';
 
+// VENDOR
 // BassCSS » http://basscss.com/#getting-started
 @import 'type-scale';
 @import 'typography';
@@ -24,5 +24,9 @@
 @import 'border';
 @import 'hide';
 
+// jquery.mmenu » http://mmenu.frebsite.nl/
+@import "vendor/mmenu";
+
 // Components
-@import 'components/nav';
+
+// Layout

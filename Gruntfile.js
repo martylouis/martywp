@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         sourceMap: true
       },
       dist: {
-        files: { 'assets/css/main.css': 'assets/sass/main.scss'  }
+        files: { 'assets/css/main.css': 'assets/scss/main.scss'  }
       }
     },
     concat: {
@@ -127,7 +127,7 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: [
-          'assets/sass/**/*.scss'
+          'assets/scss/**/*.scss'
         ],
         tasks: ['sass']
       },
