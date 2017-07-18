@@ -5,6 +5,9 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var $js_files = [
+    'node_modules/fitvids/fitvids.js',
+    'node_modules/jquery.mmenu/dist/jquery.mmenu.all.js',
+    'node_modules/jquery.mmenu/dist/wrappers/wordpress/jquery.mmenu.wordpress.js',
     'assets/js/plugins/*.js',
     'assets/js/_*.js'
   ];
@@ -30,7 +33,7 @@ module.exports = function(grunt) {
       options: {
         includePaths: [
           'node_modules/normalize-scss/sass/',
-          'node_modules/basscss-sass/scss/'
+          'node_modules/basscss-sass/scss/',
         ],
         sourceMap: true
       },
@@ -76,19 +79,6 @@ module.exports = function(grunt) {
       },
       build: {
         src: 'assets/css/main.css'
-      }
-    },
-    modernizr: {
-      build: {
-        dest: 'assets/js/vendor/modernizr.min.js',
-        files: {
-          'src': ['assets/js/scripts.js', 'assets/css/main.css']
-        },
-        extra: {
-          shiv: true
-        },
-        uglify: true,
-        parseFiles: true
       }
     },
     clean: {
@@ -139,7 +129,7 @@ module.exports = function(grunt) {
         files: [
           'assets/sass/**/*.scss'
         ],
-        tasks: ['sass', 'autoprefixer:dev', 'svgstore:dev']
+        tasks: ['sass']
       },
       js: {
         files: [
@@ -164,8 +154,9 @@ module.exports = function(grunt) {
         },
         options: {
           watchTask: true,
-          proxy: "base.dev", // Update to match your local host address
-          notify: false
+          proxy: "gmm.dev", // Update to match your local host address
+          notify: false,
+          browser: "Google Chrome"
         }
       }
     }
@@ -178,15 +169,13 @@ module.exports = function(grunt) {
     'browserSync', 'watch'
   ]);
   grunt.registerTask('default', [
-    'dev'
+    'test'
   ]);
-  grunt.registerTask('dev', [
-    'clean',
+  grunt.registerTask('test', [
     'jshint',
     'sass',
     'autoprefixer:dev',
     'concat',
-    'modernizr',
     'svgstore:dev'
   ]);
   grunt.registerTask('build', [
@@ -197,7 +186,6 @@ module.exports = function(grunt) {
     'concat',
     'cssmin',
     'uglify',
-    'modernizr',
     'svgstore:build',
     'version'
   ]);
