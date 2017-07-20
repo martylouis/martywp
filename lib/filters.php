@@ -38,7 +38,7 @@ add_filter('excerpt_more', '_base_excerpt_more');
 
 
 /**
- * Update the_excerpt() lenth
+ * Update the_excerpt() length
  */
 function _base_excerpt_length($length) {
   return 40;
