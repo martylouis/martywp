@@ -51,6 +51,7 @@ gulp.task('serve', ['sass', 'lint', 'concat'], () => {
 // Lint source js
 gulp.task('lint', () => {
   return gulp.src('./assets/js/_*.js')
+    .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
@@ -58,10 +59,11 @@ gulp.task('lint', () => {
 // Concat plugins and source scripts
 gulp.task('concat', () => {
   return gulp.src(
-    $js_plugins.join([
+    $js_plugins.concat([
       './assets/js/plugins/**/*.js',
       './assets/js/_*.js'
-    ]))
+    ]), {base: './assets/'})
+    .pipe(plumber())
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('assets/js/'));
 });
@@ -69,6 +71,7 @@ gulp.task('concat', () => {
 // Minify Scripts
 gulp.task('uglify', (cb) => {
   pump([
+    plumber(),
     gulp.src('./assets/js/scripts.js'),
     uglify(),
     rename({suffix: '.min'}),
@@ -91,6 +94,7 @@ gulp.task('js', ['lint', 'concat', 'uglify', 'jquery']);
 // Compile Sass to CSS
 gulp.task('sass', () => {
   return gulp.src('./assets/scss/*.scss')
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: $sass_plugins
@@ -103,6 +107,7 @@ gulp.task('sass', () => {
 // Autoprefix and Minify CSS
 gulp.task('postcss', () => {
   gulp.src('./assets/css/*.css')
+    .pipe(plumber())
     .pipe(postcss([
       autoprefixer({ browsers: ['last 2 versions'] }),
       cssnano({
@@ -148,3 +153,13 @@ gulp.task('major', () => {
 // Default Task
 // --------------------------------------------
 gulp.task('default', ['js', 'css', 'svg']);
+
+gulp.task('build', [
+  'lint',
+  'concat',
+  'uglify',
+  'jquery',
+  'sass',
+  'postcss',
+  'svg'
+])
