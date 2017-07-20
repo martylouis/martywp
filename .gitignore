@@ -3,9 +3,7 @@
 node_modules
 npm-debug.log
 .sass-cache
-bower_components
-assets/css/main.css
-assets/css/main.css.map
+assets/css/*
 assets/js/scripts.js
 
 ## OSX
