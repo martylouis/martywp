@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base Theme setup
+ * Base setup
  */
 function _base_setup() {
   // Make theme available for translation
@@ -42,7 +42,7 @@ function _base_setup() {
   add_theme_support('jquery-cdn');
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('/assets/css/editor-style.css');
+  add_editor_style('/assets/dist/css/editor-style.css');
 
   // add_theme_support('soil-clean-up');         // Enable clean up from Soil
   // add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
@@ -53,7 +53,7 @@ add_action('after_setup_theme', '_base_setup');
 
 
 /**
- * Setup Widgets
+ * Setup Sidebar Widgets
  */
 function _base_widgets_init() {
   register_sidebar(array(

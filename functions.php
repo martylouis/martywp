@@ -31,7 +31,7 @@ array_map(function($file) use ($base_error_msg) {
   }
 }, [
   'lib/helpers',
-  'lib/actions',
+  'lib/setup',
   'lib/filters',
   'lib/scripts',
 
