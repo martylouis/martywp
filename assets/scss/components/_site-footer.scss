@@ -1,0 +1,7 @@
+// Site Footer
+
+.site-footer {
+  @include clearfix;
+  padding-bottom: 3em;
+  background-color: $gray-lighter;
+}

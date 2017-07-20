@@ -1,6 +1,6 @@
     <footer class="site-footer" role="contentinfo">
       <div class="container">
-        Page Footer
+        <?php printf('<p><span class="text-small">&copy; %1$s %2$s</span></p>', date('Y'), get_bloginfo('name')); ?>
       </div>
     </footer>
   </div>

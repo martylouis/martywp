@@ -45,4 +45,4 @@
   <?php endif; ?>
 
 
-  <?php comment_form(['class_form' => 'form comment-form']); ?>
+  <?php comment_form(['class_form' => 'form form-comment']); ?>

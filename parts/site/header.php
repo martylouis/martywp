@@ -1,11 +1,9 @@
 <?php get_template_part('parts/site/head'); ?>
 <header id="top" class="site-header" role="banner">
   <div class="container">
-    <div class="header-brand">
-      <a class="header-logo" href="<?php echo esc_url(home_url('/')); ?>">
-        <span class="logo-text"><?php bloginfo('name'); ?></span>
-      </a>
-    </div>
+    <a class="header-logo" href="<?php echo esc_url(home_url('/')); ?>">
+      <?php bloginfo('name'); ?>
+    </a>
     <nav id="header_menu" class="header-menu" role="navigation">
       <?php
         if (has_nav_menu('header_menu')) :

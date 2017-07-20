@@ -1,0 +1,62 @@
+// Forms
+
+.form {
+
+  label,
+  &-label {
+    font-weight: 600;
+  }
+
+  input,
+  &-input,
+  textarea,
+  &-textarea {
+    @include form-input;
+  }
+
+
+  .submit,
+  input[type="submit"] {
+    @include button($link-color, $white);
+    width: auto;
+  }
+}
+
+// Search Form
+.form-search {
+  position: relative;
+
+  .form-input {
+    padding: 0.5em;
+    padding-right: 2em;
+    width: 100%;
+    border: 1px solid $gray-light;
+    font-family: $ff-sans;
+    font-size: 1.1em;
+  }
+
+  .form-submit {
+    @include button-reset;
+    position: absolute;
+    top: 8px;
+    right: 3px;
+  }
+
+  .icon-search {
+    width: 18px;
+    height: 18px;
+    color: $gray;
+  }
+}
+
+// Comment Form
+.form-comment {
+  margin-bottom: 1em;
+  padding: 0.5em 2em;
+  background-color: $gray-lighter;
+
+  .form-submit {
+    padding-top: 0.5em;
+    text-align: right;
+  }
+}

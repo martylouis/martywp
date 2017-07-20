@@ -1,19 +1,19 @@
-<section class="page-section">
+<div class="page-section">
   <div class="container">
     <div class="clearfix mxn2">
       <div class="col md-col-8 px2">
         <?php while (have_posts()) : the_post(); ?>
           <article <?php post_class('post-article'); ?> itemscope itemtype="http://schema.org/BlogPosting">
-            <?php if (has_post_thumbnail()) printf(__('<div class="post-thumb">%s</div>'), get_the_post_thumbnail($post->ID, 'featured_img', ['itemprop' => 'image'])); ?>
             <header class="post-header">
               <h1 class="post-title" itemprop="headline"><?php the_title(); ?></h1>
               <?php get_template_part('parts/post/meta'); ?>
             </header>
-            <div class="post-content" itemprop="text">
+            <?php if (has_post_thumbnail()) printf(__('<div class="post-thumb">%s</div>'), get_the_post_thumbnail($post->ID, 'featured_img', ['itemprop' => 'image'])); ?>
+            <main class="post-content" itemprop="text">
               <?php if (function_exists('sharing_display')) sharing_display('', true); ?>
               <?php the_content(); ?>
               <?php if (function_exists('sharing_display')) sharing_display('', true); ?>
-            </div>
+            </main>
             <footer class="post-footer">
               <?php echo get_the_tag_list('<p class="post-tags">Tagged in: ', ', ', '</p>'); ?>
               <?php // wp_link_pages(array('before' => '<nav class="post-nav"><p>' . __('Pages:', '_base'), 'after' => '</p></nav>')); ?>
@@ -39,4 +39,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>

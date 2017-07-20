@@ -108,6 +108,11 @@ iframe {
   width: 100%;
 }
 
+button[disabled],
+[type="button"][disabled] {
+  opacity: 0.25;
+}
+
 // Text Utils
 // --------------------------
 .text {

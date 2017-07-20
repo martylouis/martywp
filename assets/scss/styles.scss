@@ -29,5 +29,13 @@
 @import "vendor/mmenu";
 
 // Components
+@import "components/buttons";
+@import "components/forms";
+@import "components/header-menu";
+@import "components/site-header";
+@import "components/site-footer";
+@import "components/sidebars";
+
 
 // Layout
+@import "layout/page";

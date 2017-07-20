@@ -9,7 +9,7 @@
 <?php do_action('get_header'); ?>
 </head>
 <body <?php body_class(); ?>>
-  <div id="page">
+<div id="document" class="document">
 <!--[if lt IE 11]>
   <div class="browser-warning">
     You are using an <strong>outdated</strong> browser. Please <a href="<?php echo esc_url('http://browsehappy.com/') ?>">upgrade your browser</a> to improve your experience.
