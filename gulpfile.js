@@ -31,19 +31,8 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     path = require('path'),
     browserSync = require('browser-sync').create();
+    reload = browserSync.reload,
     bump = require('gulp-bump');
-
-
-// Serve Task
-// --------------------------------------------
-gulp.task('serve', ['sass', 'lint', 'concat'], () => {
-  browserSync.init({
-    proxy: $url
-  });
-  gulp.watch('./assets/scss/**/*.scss', ['sass']);
-  gulp.watch(['./assets/js/_*.js', './gulpfile.js'], ['lint', 'concat']);
-  gulp.watch('./**/*.php').on('change', browserSync.reload);
-});
 
 
 // JavaScript Tasks
@@ -147,6 +136,19 @@ gulp.task('minor', () => {
 
 gulp.task('major', () => {
   gulp.src($pkg).pipe(bump({type: 'major'})).pipe(gulp.dest('./'));
+});
+
+
+// Serve Task
+// --------------------------------------------
+gulp.task('serve', ['sass', 'lint', 'concat'], () => {
+  browserSync.init({
+    proxy: $url,
+    notify: false
+  });
+  gulp.watch('./assets/scss/**/*.scss', ['sass']);
+  gulp.watch('**/*/js', ['lint', 'concat']).on('change', reload);
+  gulp.watch('**/*.php').on('change', reload);
 });
 
 
