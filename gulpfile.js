@@ -1,6 +1,6 @@
 `use strict`;
 
-var $url = 'base.dev'; // Local proxy address for browserSync
+var $url = 'gmm.dev'; // Local proxy address for browserSync
 var $pkg = './package.json'; // Local package.json path
 
 var $js_plugins = [
@@ -124,17 +124,30 @@ gulp.task('svg', () => {
     .pipe(gulp.dest('./assets/dist/'));
 });
 
+// Image min tasks
+// --------------------------------------------
+gulp.task('img', () => {
+  gulp.src('./assets/img/*')
+    .pipe(plumber())
+    .pipe(imagemin())
+    .pipe(gulp.dest('./assets/dist/img/'))
+});
+
+
 // Version Bump Tasks
 // --------------------------------------------
-gulp.task('patch', () => {
+gulp.task('bump:pre', () => {
+  gulp.src($pkg).pipe(bump({type: 'prerelease'})).pipe(gulp.dest('./'));
+});
+gulp.task('bump', () => {
   gulp.src($pkg).pipe(bump()).pipe(gulp.dest('./'));
 });
 
-gulp.task('minor', () => {
+gulp.task('bump:minor', () => {
   gulp.src($pkg).pipe(bump({type: 'minor'})).pipe(gulp.dest('./'));
 });
 
-gulp.task('major', () => {
+gulp.task('bump:major', () => {
   gulp.src($pkg).pipe(bump({type: 'major'})).pipe(gulp.dest('./'));
 });
 
@@ -147,15 +160,16 @@ gulp.task('serve', ['sass', 'lint', 'concat'], () => {
     notify: false
   });
   gulp.watch('./assets/scss/**/*.scss', ['sass']);
-  gulp.watch('**/*/js', ['lint', 'concat']).on('change', reload);
+  gulp.watch('**/*.js', ['lint', 'concat']).on('change', reload);
   gulp.watch('**/*.svg', ['svg']).on('change', reload);
+  gulp.watch(['**/*.png', '**/*.jpg', '**/*.gif'], ['img']).on('change', reload);
   gulp.watch('**/*.php').on('change', reload);
 });
 
 
 // Default Task
 // --------------------------------------------
-gulp.task('default', ['js', 'css', 'svg']);
+gulp.task('default', ['js', 'css', 'svg', 'img']);
 
 gulp.task('build', [
   'lint',
@@ -164,5 +178,6 @@ gulp.task('build', [
   'jquery',
   'sass',
   'postcss',
-  'svg'
+  'svg',
+  'img'
 ])
