@@ -179,7 +179,10 @@ gulp.task('serve', ['sass', 'lint', 'concat'], () => {
 
 // Default Task
 // --------------------------------------------
-gulp.task('default', ['serve']);
+gulp.task('test', [
+  'sass',
+  'lint',
+]);
 
 gulp.task('build', [
   'clean-dist',
@@ -189,3 +192,5 @@ gulp.task('build', [
   'svg',
   'img'
 ])
+
+gulp.task('default', ['test']);
