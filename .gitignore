@@ -5,6 +5,7 @@ npm-debug.log
 .sass-cache
 assets/css/*
 assets/js/scripts.js
+assets/dist/*
 
 ## OSX
 ## --------------------------
