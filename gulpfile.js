@@ -148,6 +148,7 @@ gulp.task('serve', ['sass', 'lint', 'concat'], () => {
   });
   gulp.watch('./assets/scss/**/*.scss', ['sass']);
   gulp.watch('**/*/js', ['lint', 'concat']).on('change', reload);
+  gulp.watch('**/*.svg', ['svg']).on('change', reload);
   gulp.watch('**/*.php').on('change', reload);
 });
 
