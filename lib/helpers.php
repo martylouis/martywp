@@ -16,6 +16,35 @@ function debug($data, $type = 'log') {
 
 
 /**
+ * Display Images in assets folder
+ * TODO: Set the image path based on src or dist
+ */
+function __img($img) {
+  $template_dir = get_template_directory_uri();
+  $img_dir = '/assets/img/';
+  $img_path = sprintf('%1$s%2$s%3$s', $template_dir, $img_dir, $img);
+
+  return $img_path;
+}
+
+function _img($img) {
+  echo __img($img);
+}
+
+
+/**
+ * Display svg icons
+ */
+function __svg($icon_name) {
+  return sprintf('<i class="icon icon-%1$s"><svg class="svg"><use xlink:href="#svg-%1$s"></svg></i>', $icon_name);
+}
+
+function _svg($icon_name) {
+  echo __svg($icon_name);
+}
+
+
+/**
  * Is the element empty?
  */
 function is_element_empty($element) {
