@@ -166,13 +166,13 @@ gulp.task('bump:major', () => {
 
 // Serve Task
 // --------------------------------------------
-gulp.task('serve', ['sass', 'lint', 'concat'], () => {
+gulp.task('serve', () => {
   browserSync.init({
     proxy: $url,
     notify: false
   });
   gulp.watch('./assets/scss/**/*.scss', ['sass']);
-  gulp.watch('**/*.js', ['lint', 'concat']).on('change', reload);
+  gulp.watch('./assets/js/**/*.js', ['lint', 'concat']).on('change', reload);
   gulp.watch('**/*.php').on('change', reload);
 });
 
