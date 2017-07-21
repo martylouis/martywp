@@ -1,6 +1,6 @@
 `use strict`;
 
-var $url = 'gmm.dev'; // Local proxy address for browserSync
+var $url = 'base.dev'; // Local proxy address for browserSync
 var $pkg = './package.json'; // Local package.json path
 
 var $js_plugins = [
@@ -32,21 +32,34 @@ var gulp = require('gulp'),
     path = require('path'),
     browserSync = require('browser-sync').create();
     reload = browserSync.reload,
+    clean = require('gulp-clean'),
     bump = require('gulp-bump');
+
+
+
+// Clean tasks
+// --------------------------------------------
+gulp.task('clean-dist', (cb) => {
+  return gulp.src('./assets/dist/')
+    .pipe(plumber())
+    .pipe(clean());
+    cb(err);
+});
 
 
 // JavaScript Tasks
 // --------------------------------------------
 // Lint source js
-gulp.task('lint', () => {
+gulp.task('lint', (cb) => {
   return gulp.src('./assets/js/_*.js')
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
+    cb(err);
 });
 
 // Concat plugins and source scripts
-gulp.task('concat', () => {
+gulp.task('concat', ['lint'], (cb) => {
   return gulp.src(
     $js_plugins.concat([
       './assets/js/plugins/**/*.js',
@@ -55,33 +68,33 @@ gulp.task('concat', () => {
     .pipe(plumber())
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('assets/js/'));
+    cb(err);
 });
 
 // Minify Scripts
-gulp.task('uglify', (cb) => {
+gulp.task('uglify', ['clean-dist', 'lint', 'concat'], (cb) => {
   pump([
     plumber(),
     gulp.src('./assets/js/scripts.js'),
     uglify(),
     rename({suffix: '.min'}),
     gulp.dest('./assets/dist/js/')
-  ], cb);
+  ], cb());
 });
 
 // Grab a local copy of jQuery
-gulp.task('jquery', () => {
+gulp.task('jquery', ['clean-dist'], (cb) => {
   return gulp.src('./node_modules/jquery/dist/jquery.min.js')
     .pipe(concat('jquery.min.js'))
     .pipe(gulp.dest('./assets/dist/js/vendor/'));
+    cb(err);
 });
-
-gulp.task('js', ['lint', 'concat', 'uglify', 'jquery']);
 
 
 // Style Tasks
 // --------------------------------------------
 // Compile Sass to CSS
-gulp.task('sass', () => {
+gulp.task('sass', (cb) => {
   return gulp.src('./assets/scss/*.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
@@ -91,11 +104,12 @@ gulp.task('sass', () => {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./assets/css/'))
     .pipe(browserSync.stream());
+    cb(err);
 });
 
 // Autoprefix and Minify CSS
-gulp.task('postcss', () => {
-  gulp.src('./assets/css/*.css')
+gulp.task('postcss', ['clean-dist', 'sass'], () => {
+  return gulp.src('./assets/css/*.css')
     .pipe(plumber())
     .pipe(postcss([
       autoprefixer({ browsers: ['last 2 versions'] }),
@@ -107,12 +121,10 @@ gulp.task('postcss', () => {
     .pipe(gulp.dest('./assets/dist/css/'));
 });
 
-gulp.task('css', ['sass', 'postcss']);
-
 
 // SVG Tasks
 // --------------------------------------------
-gulp.task('svg', () => {
+gulp.task('svg', ['clean-dist'], () => {
   return gulp.src('./assets/svg/*.svg')
     .pipe(plumber())
     .pipe(imagemin([
@@ -126,11 +138,11 @@ gulp.task('svg', () => {
 
 // Image min tasks
 // --------------------------------------------
-gulp.task('img', () => {
-  gulp.src('./assets/img/*')
+gulp.task('img', ['clean-dist'], () => {
+  return gulp.src('./assets/img/*')
     .pipe(plumber())
     .pipe(imagemin())
-    .pipe(gulp.dest('./assets/dist/img/'))
+    .pipe(gulp.dest('./assets/dist/img/'));
 });
 
 
@@ -161,23 +173,19 @@ gulp.task('serve', ['sass', 'lint', 'concat'], () => {
   });
   gulp.watch('./assets/scss/**/*.scss', ['sass']);
   gulp.watch('**/*.js', ['lint', 'concat']).on('change', reload);
-  gulp.watch('**/*.svg', ['svg']).on('change', reload);
-  gulp.watch(['**/*.png', '**/*.jpg', '**/*.gif'], ['img']).on('change', reload);
   gulp.watch('**/*.php').on('change', reload);
 });
 
 
 // Default Task
 // --------------------------------------------
-gulp.task('default', ['js', 'css', 'svg', 'img']);
+gulp.task('default', ['serve']);
 
 gulp.task('build', [
-  'lint',
-  'concat',
+  'clean-dist',
+  'postcss',
   'uglify',
   'jquery',
-  'sass',
-  'postcss',
   'svg',
   'img'
 ])
