@@ -16,12 +16,12 @@ function debug($data, $type = 'log') {
 
 
 /**
- * Display Images in assets folder
- * TODO: Set the image path based on src or dist
+ * Display images in assets folder
  */
 function __img($img) {
+  $wp_dev = (WP_ENV === 'development' ? true : false);
   $template_dir = get_template_directory_uri();
-  $img_dir = '/assets/img/';
+  $img_dir = $wp_dev ? '/assets/img/' : '/assets/dist/img/';
   $img_path = sprintf('%1$s%2$s%3$s', $template_dir, $img_dir, $img);
 
   return $img_path;
@@ -92,6 +92,21 @@ function _base_thumb($post, $size, $link = false ) {
   elseif ( has_post_thumbnail() ) :
     printf('<a itemprop="url" href="%1$s">%2$s</a>', esc_url(get_the_permalink($post)), get_the_post_thumbnail($post, $size));
   endif;
+}
+
+
+/**
+ *  Get assets based on WP_ENV
+ */
+function _base_asset_path($name, $type) {
+  if (WP_ENV === 'development') {
+    $asset_dir = get_template_directory_uri() . '/assets';
+    $min = '';
+  } else {
+    $asset_dir = get_template_directory_uri() . '/assets/dist';
+    $min = '.min';
+  }
+  return $path = sprintf('%1$s/%4$s/%2$s%3$s.%4$s', $asset_dir, $name, $min, $type);
 }
 
 

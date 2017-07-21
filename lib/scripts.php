@@ -1,15 +1,5 @@
 <?php
 
-/**
- *  Set asset path based on WP_ENV
- */
-function _base_asset_path($name, $type) {
-  $wp_dev = (WP_ENV === 'development' ? true : false);
-  $uri = get_template_directory_uri();
-  $path = $wp_dev ? sprintf('%1$s/assets/%2$s/%3$s.%2$s', $uri, $type, $name) : sprintf('%1$s/assets/dist/%2$s/%3$s.min.%2$s', $uri, $type, $name);
-  return $path;
-}
-
 
 /**
  *  Enqueue the scripts
