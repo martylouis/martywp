@@ -46,6 +46,5 @@ array_map(function($file) use ($base_error_msg) {
   // 'components/gallery',
   // 'components/google_maps',
   'components/nav',
-  'components/svg_icon',
   'components/related_posts'
 ]);

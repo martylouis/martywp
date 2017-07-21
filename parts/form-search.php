@@ -3,6 +3,6 @@
   <input type="search" value="<?php echo get_search_query(); ?>" name="s" class="form-input" placeholder="<?php _e('Search', '_base'); ?> <?php bloginfo('name'); ?>" required>
   <button type="submit" class="form-submit">
     <span class="hide"><?php _e('Search', '_base'); ?></span>
-    <?php the_svg_icon('search'); ?>
+    <?php _svg('search'); ?>
   </button>
 </form>

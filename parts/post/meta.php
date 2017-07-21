@@ -14,7 +14,7 @@
       %3$s %2$s
     </a>
   ';
-  $show_comments = $comment_count > 0 ? sprintf($comment_html, get_the_permalink(), $comment_count, get_svg_icon('comment')) : '';
+  $show_comments = $comment_count > 0 ? sprintf($comment_html, get_the_permalink(), $comment_count, __svg('comment')) : '';
 
 ?>
 
