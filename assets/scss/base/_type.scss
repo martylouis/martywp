@@ -26,6 +26,7 @@ button {
 }
 
 body {
+  margin: 0;
   color: $text-color;
   font-family: $base-font-family;
   font-size: 100%;
@@ -33,6 +34,7 @@ body {
 }
 
 a {
+  display: inline-block;
   color: $link-color;
   text-decoration: none;
   transition: all 0.1s linear;
