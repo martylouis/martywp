@@ -65,8 +65,8 @@ add_action('wp_head', '_base_jquery_local_fallback');
  * Cookie domain is 'auto' configured. See: http://goo.gl/VUCHKM
  */
 function _base_google_analytics() {
-  if (function_exists('get_field') && get_field('google_analytics_id', 'options') ) :
-    $ga_ID = get_field('google_analytics_id', 'options');
+  if (function_exists('get_field') && get_field('cso_google_analytics_id', 'options') ) :
+    $ga_ID = get_field('cso_google_analytics_id', 'options');
 ?><script>
 <?php if (WP_ENV === 'production') : ?>
 (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
