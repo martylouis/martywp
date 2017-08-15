@@ -60,7 +60,7 @@ add_action('wp_head', '_base_jquery_local_fallback');
 
 
 /**
- * Google Analytics snippet from HTML5 Boilerplate
+ * CSO Google Analytics Setup
  *
  * Cookie domain is 'auto' configured. See: http://goo.gl/VUCHKM
  */
@@ -90,3 +90,44 @@ endif;
 if (WP_ENV !== 'production' || !current_user_can('manage_options')) {
   add_action('wp_head', '_base_google_analytics', 20);
 }
+
+
+/**
+ * CSO Head and Footer Script Setup
+ */
+function cso_head_scripts() {
+  echo $head_scripts = get_field('cso_code_head', 'option') ? : '';
+}
+add_action('wp_head', 'cso_head_scripts', 99);
+
+function cso_footer_scripts() {
+  echo $head_scripts = get_field('cso_code_footer', 'option') ? : '';
+}
+add_action('wp_footer', 'cso_head_scripts', 99);
+
+
+/**
+ * CSO Google Tag Manager Setup
+ */
+function google_tag_manager_head() {
+  if (get_field('cso_gtm_id', 'option')) :
+    $id = get_field('cso_gtm_id', 'option');
+    printf('<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({\'gtm.start\':
+    new Date().getTime(),event:\'gtm.js\'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';j.async=true;j.src=
+    \'https://www.googletagmanager.com/gtm.js?id=\'+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,\'script\',\'dataLayer\',\'%s\');</script>
+    <!-- End Google Tag Manager -->
+  ', $id);
+endif;
+}
+add_action('wp_head', 'google_tag_manager_head', 99);
+
+function google_tag_manager_noscript() {
+  if ( get_field('cso_gtm_id', 'option') ) :
+    $id = get_field('cso_gtm_id', 'option');
+    printf('<!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%s" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->', $id);
+  endif;
+}
+add_action('after_body_open', 'google_tag_manager_noscript');
