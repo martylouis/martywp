@@ -1,5 +1,26 @@
 // Forms
 
+@mixin input-reset {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 1px solid $border-color;
+}
+
+@mixin form-input {
+  @include input-reset;
+  padding: 0.5rem;
+  font-family: $ff-sans;
+  font-size: 1rem;
+
+
+  &:active,
+  &:focus {
+    outline: 0;
+    box-shadow: 0 3px 3px rgba($blue, 0.1);
+    border-color: $blue;
+  }
+}
+
 .form {
 
   label,

@@ -6,21 +6,10 @@
 @import 'base/variables';
 @import 'base/mixins';
 @import 'base/type';
-@import 'base/icons';
+@import 'base/utils';
+// @import 'base/grid';
 
 // VENDOR
-// BassCSS » http://basscss.com/#getting-started
-@import 'type-scale';
-@import 'typography';
-@import 'layout';
-@import 'align';
-@import 'margin';
-@import 'padding';
-@import 'grid';
-@import 'flexbox';
-@import 'position';
-@import 'border';
-@import 'hide';
 
 // jquery.mmenu » http://mmenu.frebsite.nl/
 @import "vendor/mmenu";
@@ -28,11 +17,14 @@
 // Components
 @import "components/buttons";
 @import "components/forms";
-@import "components/header-menu";
+@import 'components/icons';
+@import "components/menu-primary";
 @import "components/site-header";
 @import "components/site-footer";
 @import "components/sidebars";
 
 
-// Layout
-@import "layout/page";
+// Templates
+@import "template/page";
+// @import "template/frontpage";
+// @import "template/contact";

@@ -1,28 +1,105 @@
 // Buttons
-
 $button-sizes: 'sm', 'lg';
 
-// Font Sizes
-$font-base: 0.9em;
-$font-sm: 0.75em;
-$font-lg: 1.1em;
+$button-colors: (
+  'blue': $blue,
+);
 
-// Padding Sizes
-$padding-base: 0.75em 1.75em;
-$padding-sm: 0.5em 1.5em;
-$padding-lg: 1em 2em;
-
-// Button Sizes
-@each $size in $button-sizes {
-  .button-#{$size} {
-    @include button($link-color, $white, $size);
+@mixin button-effects($bg) {
+  background-color: $bg;
+  border-color: transparent;
+  color: $white;
+  @include hover-focus {
+    background-color: saturate(darken($bg, 5), 10);
   }
 }
 
-.button {
-  @include button($link-color, $white);
+// Buttons
+@mixin button-reset() {
+  font-size: 1rem;
+  background-color: transparent;
+  border: 0;
+  display: inline-block;
+  -webkit-appearance: none;
+  user-select: none;
+  cursor: pointer;
 }
 
-.button-outline {
-  @include button-outline($link-color, $link-color, $link-color, $white);
+@mixin button-size($size) {
+  margin: auto;
+  padding: 0.5rem 1.25rem;
+  letter-spacing: 0.025rem;
+  @if $size=="lg" {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  } @else if $size=="sm" {
+    font-size: 0.7rem;
+  } @else {
+    font-size: 0.8rem;
+  }
+}
+
+@mixin button-outline($color: $link-color) {
+  color: $color;
+  background-color: transparent;
+  border: 1px solid;
+}
+
+@mixin button($size: '', $bg: $link-color, $outline-color: '') {
+  @include button-reset;
+  @include button-size($size);
+  align-items: center;
+  font-family: $ff-sans;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  @if $bg=="outline" {
+    @include button-outline($outline-color);
+  } @else {
+    @include button-effects($bg);
+  }
+}
+
+button {
+  @include button-reset;
+}
+
+button[disabled],
+[type="button"][disabled] {
+  @include button-reset;
+  opacity: 0.25;
+}
+
+.button {
+  @include button;
+  @each $size in $button-sizes {
+    &.#{$size} {
+      @include button-size($size);
+    }
+  }
+  @each $name, $bg in $button-colors {
+    &.#{$name} {
+      @include button-effects($bg);
+      @if $name=="white" {
+        color: $blue-dark;
+      }
+    }
+  }
+  &.outline {
+    @include button-outline();
+  }
+  @each $name, $color in $button-colors {
+    &.outline.#{$name} {
+      @include button-outline($color);
+    }
+  }
+  &.empty {
+    padding-left: $baseline / 2;
+    padding-right: $baseline / 2;
+    background-color: transparent;
+    color: $link-color;
+  }
+  &+& {
+    margin-left: $baseline / 3;
+  }
 }

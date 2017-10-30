@@ -1,14 +1,8 @@
 // Clearfix
-@mixin clearfix {
-  *zoom: 1;
-
-  &::before,
+@mixin clearfix() {
   &::after {
-    display: table;
-    content: ' ';
-  }
-
-  &::after {
+    display: block;
+    content: "";
     clear: both;
   }
 }
@@ -57,87 +51,21 @@
   }
 }
 
-// Buttons
-@mixin button-reset {
-  display: inline-block;
-  -webkit-appearance: none;
-  background-color: transparent;
-  border-color: transparent;
-  user-select: none;
-}
+// Fluid Sizing
+@mixin fluid($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+		#{$property}: $min-value;
+	}
 
-@mixin button-size($size) {
-  @if $size == "lg" {
-    padding: $padding-lg;
-    font-size: $font-lg;
-  } @else if $size == "sm" {
-    padding: $padding-sm;
-    font-size: $font-sm;
-  } @else {
-    padding: $padding-base;
-    font-size: $font-base;
-  }
-}
+	@media screen and (min-width: $min-vw) {
+		@each $property in $properties {
+			#{$property}: calc(#{$min-value} + #{strip_unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip_unit($max-vw - $min-vw)}));
+		}
+	}
 
-@mixin button-base {
-  font-family: $ff-sans;
-  font-weight: 600 !important;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 0.05em;
-}
-
-@mixin button-icon {
-  .icon {
-    position: relative;
-    top: 2px;
-    width: 1em;
-    height: 1em;
-  }
-}
-
-@mixin button($background, $color, $size: "") {
-  @include button-reset;
-  @include button-size($size);
-  @include button-base;
-  background-color: $background;
-  border: 1px solid transparent;
-  color: $color;
-
-  @include hover-focus {
-    background-color: darken($background, 10);
-    border: 1px solid transparent;
-  }
-
-  @include button-icon;
-}
-
-@mixin button-outline($border, $color, $hover-bg, $hover-color, $size: "") {
-  @include button-reset;
-  @include button-size($size);
-  @include button-base;
-  background-color: transparent;
-  border: 1px solid $border;
-  color: $color;
-
-  @include hover-focus {
-    background-color: $hover-bg;
-    border: 1px solid transparent;
-    color: $hover-color;
-  }
-
-  @include button-icon;
-
-}
-
-// Forms
-@mixin form-input {
-  padding: 0.5em;
-  width: 100%;
-  border: 1px solid $gray-light;
-
-  &:active,
-  &:focus {
-    outline: $link-color auto 5px;
-  }
+	@media screen and (min-width: $max-vw) {
+		@each $property in $properties {
+			#{$property}: $max-value;
+		}
+	}
 }

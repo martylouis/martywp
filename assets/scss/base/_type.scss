@@ -4,45 +4,44 @@
   box-sizing: border-box;
 }
 
-
-html {
-  font-size: $base-font-size;
-
-  @include media-min($md) {
-    font-size: ($base-font-size + 0.5);
-  }
-
-  @include media-min($lg) {
-    font-size: ($base-font-size + 1);
-  }
-}
+html { @include fluid(font-size, $xs, $xl, $font-size-min, $font-size-max); }
 
 body,
 input,
 textarea,
 select,
-button {
-  @include antialias-text;
-}
+button { @include antialias-text; }
+
 
 body {
-  margin: 0;
   color: $text-color;
+  background-color: $white;
   font-family: $base-font-family;
   font-size: 100%;
-  line-height: $base-line-height;
+  line-height: strip_unit($baseline);
 }
 
 a {
-  display: inline-block;
   color: $link-color;
   text-decoration: none;
   transition: all 0.1s linear;
 }
 
-p, pre, table, ul {
-  margin-top: 0.75em;
-  margin-bottom: 0.75em;
+p,
+ul,
+ol,
+pre,
+table,
+blockquote { margin: 0 auto $baseline / 2;}
+
+ul, ol {
+  list-style-position: outside;
+  margin-left: -2.15rem;
+
+  & {
+    margin-left: -1rem;
+    margin-bottom: 0;
+  }
 }
 
 blockquote {
@@ -63,156 +62,91 @@ blockquote {
   }
 }
 
-h1 {
-  font-size: 2.5em;
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: $baseline;
+  margin-bottom: $baseline / 3;
+  font-weight: inherit;
+  line-height: strip_unit($baseline * 0.75);
 }
 
-h2 {
-  font-size: 2em;
+h4, .h4,
+h5, .h5,
+h6, .h6{
+  margin-top: $baseline;
 }
 
-h3 {
-  font-size: 1.5em;
-}
-
-h4 {
-  font-size: 1.25em;
-}
-
-h5 {
-  font-size: 1.15em
-}
-
-h6 {
-  font-size: 1em;
-}
-
-
-h1, h2, h3 {
-  line-height: 1.25;
-  margin: 0.5em 0;
-}
-
-h4, h5, h6 {
-  margin: 0 0 0.5em;
-}
+h1, .h1 { @include fluid(font-size, $xs, $xl, 1.602rem, 2.074rem); }
+h2, .h2 { @include fluid(font-size, $xs, $xl, 1.424rem, 1.728rem); }
+h3, .h3 { @include fluid(font-size, $xs, $xl, 1.266rem, 1.44rem); }
+h4, .h4 { @include fluid(font-size, $xs, $xl, 1.125rem, 1.2rem); }
+h5, .h5 { @include fluid(font-size, $xs, $xl, 1rem, 1rem); }
+h6, .h6 { @include fluid(font-size, $xs, $xl, 0.889rem, 0.833rem); }
 
 hr {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border-top: 3px solid $gray-light;
-  border-bottom: 0;
-  border-left: 0;
-  border-right: 0;
+  margin-top: $baseline;
+  margin-bottom: $baseline;
+  border: 0;
+  border-top: 2px solid $border-color;
 }
 
 iframe {
   width: 100%;
 }
 
+code {
+  font-family: $ff-mono;
+  font-size: 75%;
+  padding: 0.25em 0;
+  border-radius: 0.25em;
+
+  p & {
+    height: $baseline;
+    color: #d14;
+
+    &:before,
+    &:after {
+      letter-spacing: -0.05em;
+      content: "\00a0";
+    }
+  }
+}
+
+blockquote {
+  @include clearfix;
+  padding-top: 1rem;
+  position: relative;
+
+  p {
+    position: relative;
+    font-size: 1.5rem;
+    font-family: $ff-serif;
+    font-style: italic;
+    color: $blue;
+
+    &:first-child {
+      text-indent: -0.5rem;
+
+      &:before { content: '\201C'; }
+    }
+
+    &:last-child:after { content:'\201D'; }
+  }
+}
+
+iframe { width: 100%; }
+
 button[disabled],
 [type="button"][disabled] {
   opacity: 0.25;
 }
 
-// Text Utils
-// --------------------------
-.text {
-
-  &-center {
-    text-align: center;
-  }
-
-  &-left {
-    text-align: left;
-  }
-
-  &-right {
-    text-align: right;
-  }
-
-  &-justify {
-    text-align: justify;
-  }
-
-  &-highlight {
-    background-color: yellow;
-  }
-
-  &-large {
-    font-size: 1.15em;
-  }
-
-  &-small {
-    font-size: 0.85em;
-  }
-
-  &-upper {
-    text-transform: uppercase;
-  }
-
-}
-
-// WordPress Core Generated Classes
-// http://codex.wordpress.org/CSS#WordPress_Generated_Classes
-
-.align {
-
-  &left,
-  &right,
-  &none {
-    display: block;
-    margin: 0.25em;
-  }
-
-  &left {
-    float: left;
-  }
-
-  &right {
-    margin-right: 0;
-    margin-left: 1em;
-    float: right;
-  }
-
-  &center {
-    margin: 0.25em auto;
-  }
-
-}
-
-
-.wp-caption {
-  max-width: 96%; // Image does not overflow the content area
-  padding: 0.25em 0.25em 0.5em;
-  border: 1px solid $gray-light;
-  background: $white;
-  text-align: center;
-
-  img {
-    width: auto;
-    max-width: 98.5%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    border: 0 none;
-  }
-
-  &-text {
-    margin: 0;
-    padding: 0.25em;
-    font-size: 0.8em;
-    line-height: 1.25;
-  }
-}
-
-
-// Text meant only for screen readers.
-.screen-reader-text,
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
 }

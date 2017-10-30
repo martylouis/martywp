@@ -1,4 +1,4 @@
-<?php get_template_part('parts/site/header'); ?>
+<?php get_template_part('components/site/header'); ?>
 <section class="content">
   <div class="container">
     <header class="page-header">
@@ -15,4 +15,4 @@
     <?php get_search_form(); ?>
   </div>
 </section>
-<?php get_template_part('parts/site/footer'); ?>
+<?php get_template_part('components/site/footer'); ?>

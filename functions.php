@@ -34,17 +34,17 @@ array_map(function($file) use ($base_error_msg) {
   'lib/setup',
   'lib/filters',
   'lib/scripts',
+  // 'lib/_base_menu_walker',
+  'lib/util_post',
+  // 'lib/_base_google_maps',
 
   // ACF
   'fields/acf',
 
   // Post Types
+  // components/types/[name].php
 
   // Taxonomies
+  // components/types/[name].php
 
-  // Components
-  // 'components/gallery',
-  // 'components/google_maps',
-  'components/nav',
-  'components/related_posts'
 ]);

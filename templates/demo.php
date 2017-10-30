@@ -1,6 +1,6 @@
 <?php  /* Template Name: Demo Page */ ?>
-<?php get_template_part('parts/site/header'); ?>
-<?php get_template_part('parts/page/header'); ?>
+<?php get_template_part('components/site/header'); ?>
+<?php get_template_part('components/page/header'); ?>
 <div class="page-section">
   <div class="container">
     <p>A small paragraph to <em>emphasis</em> and show <strong>important</strong> bits.</p>
@@ -85,4 +85,4 @@
 
   </div>
 </div>
-<?php get_template_part('parts/site/footer'); ?>
+<?php get_template_part('components/site/footer'); ?>

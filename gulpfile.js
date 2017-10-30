@@ -9,8 +9,7 @@ var $js_plugins = [
   'node_modules/jquery.mmenu/dist/wrappers/wordpress/jquery.mmenu.wordpress.js',
 ];
 var $sass_plugins = [
-  'node_modules/normalize-scss/sass/',
-  'node_modules/basscss-sass/scss'
+  // 'node_modules/basscss-sass/scss'
 ];
 
 var gulp = require('gulp'),
@@ -169,7 +168,8 @@ gulp.task('bump:major', () => {
 gulp.task('serve', () => {
   browserSync.init({
     proxy: $url,
-    notify: false
+    notify: false,
+    open: false
   });
   gulp.watch('./assets/scss/**/*.scss', ['sass']);
   gulp.watch('./assets/js/**/*.js', ['lint', 'concat']).on('change', reload);

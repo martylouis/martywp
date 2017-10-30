@@ -1,4 +1,21 @@
 // Calculate to px to ems
 @function em($target-px, $context) {
-  @return ($target-px / $context) * 1em;
+  @return ($target-px / $context) * 1rem;
+}
+
+// Remove unit of measurement from value
+@function strip_unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+// Multiply
+@function x($value1, $value2) {
+  @return $value1 * $value2;
+}
+
+@function type_scale($increment, $size, $ratio) {
+  @for $i from 1 through $increment {
+    $size: $size * $ratio;
+  }
+  @return $size;
 }

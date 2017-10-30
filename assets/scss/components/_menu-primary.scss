@@ -1,6 +1,6 @@
-// header menu
+// Primary Menu
 
-.header-menu {
+.menu-primary {
 
   .site-header & {
     display: none;
@@ -67,7 +67,7 @@
 
 @include media-min($md) {
 
-  .header-menu {
+  .menu-header {
 
     .site-header & {
       display: block;
