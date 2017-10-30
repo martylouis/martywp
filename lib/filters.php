@@ -17,11 +17,11 @@ add_filter('body_class', '_base_body_class');
 
 
 /**
-  * Tell WordPress to use searchform.php from the parts directory
+  * Tell WordPress to use form/search.php from the parts directory
   */
 function _base_get_search_form() {
   $form = '';
-  locate_template('/parts/form-search.php', true, false);
+  locate_template('/components/form/search.php', true, false);
   return $form;
 }
 add_filter('get_search_form', '_base_get_search_form');

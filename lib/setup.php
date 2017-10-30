@@ -18,9 +18,9 @@ function _base_setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
-    'header_menu' => __('Header Menu', '_base'),
-    'blog_menu' => __('Blog Menu', '_base'),
-    'footer_menu' => __('Footer Menu', '_base')
+    'menu_primary' => __('Primary Menu', '_base'),
+    // 'menu_blog' => __('Blog Menu', '_base'),
+    // 'menu_footer' => __('Footer Menu', '_base')
   ));
 
   // Add post thumbnails
@@ -59,8 +59,8 @@ function _base_widgets_init() {
   register_sidebar(array(
     'name'          => __('Primary', '_base'),
     'id'            => 'sidebar-primary',
-    'before_widget' => '<section class="widget %1$s %2$s">',
-    'after_widget'  => '</section>',
+    'before_widget' => '<aside class="widget %1$s %2$s">',
+    'after_widget'  => '</aside>',
     'before_title'  => '<h3 class="widget-heading">',
     'after_title'   => '</h3>',
   ));
@@ -68,8 +68,8 @@ function _base_widgets_init() {
   register_sidebar(array(
     'name'          => __('Secondary', '_base'),
     'id'            => 'sidebar-secondary',
-    'before_widget' => '<section class="widget %1$s %2$s">',
-    'after_widget'  => '</section>',
+    'before_widget' => '<aside class="widget %1$s %2$s">',
+    'after_widget'  => '</aside>',
     'before_title'  => '<h3 class="widget-heading">',
     'after_title'   => '</h3>',
   ));

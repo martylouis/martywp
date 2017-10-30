@@ -93,7 +93,7 @@ if (WP_ENV !== 'production' || !current_user_can('manage_options')) {
 
 
 /**
- * CSO Head and Footer Script Setup
+ * Common Site Options -  Head and Footer Script Setup
  */
 function cso_head_scripts() {
   echo $head_scripts = get_field('cso_code_head', 'option') ? : '';
