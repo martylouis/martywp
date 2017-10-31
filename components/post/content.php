@@ -1,9 +1,4 @@
-<?php
-
-  $post_utils = new PostUtils;
-
-
-while (have_posts()) : the_post(); ?>
+<?php while (have_posts()) : the_post(); ?>
   <div class="container">
     <main class="site-main">
       <article <?php post_class('main-content'); ?> itemscope itemtype="http://schema.org/BlogPosting">
@@ -21,7 +16,7 @@ while (have_posts()) : the_post(); ?>
           <?php get_template_part('components/post/author'); ?>
           <?php comments_template('/components/post/comments.php'); ?>
           <h3 class="post-list-heading">Related Posts</h3>
-          <div class="post-list post-list-related"><?php $post_utils->related($post, 2); ?></div>
+          <div class="post-list post-list-related"><?php PostUtils::related($post, 2); ?></div>
         </footer>
       </article>
       <div class="main-sidebar">
