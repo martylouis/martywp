@@ -31,10 +31,9 @@ add_filter('get_search_form', '_base_get_search_form');
  * Clean up the_excerpt()
  */
 function _base_excerpt_more() {
-  return sprintf(__(' &hellip; <div class="post-read-more"><a href="%s">Read More &rarr;</a></div>'), get_permalink());
+  return sprintf(__(' &hellip; <p class="entry-read-more"><a class="button" href="%s">Read More &rarr;</a></p>'), get_permalink());
 }
 add_filter('excerpt_more', '_base_excerpt_more');
-
 
 
 /**
