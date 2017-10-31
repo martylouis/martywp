@@ -18,6 +18,6 @@
 
 ?>
 
-<div class="entry-meta">
+<p class="entry-meta">
   <?php printf(__('By %s on %s %s'), $author_html, $time_html, $show_comments); ?>
-</div>
+</p>
