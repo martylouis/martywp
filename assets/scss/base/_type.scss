@@ -8,7 +8,6 @@ button { @include antialias-text; }
 
 body {
   color: $text-color;
-  background-color: $white;
   font-family: $base-font-family;
   font-size: 100%;
   line-height: strip_unit($baseline);

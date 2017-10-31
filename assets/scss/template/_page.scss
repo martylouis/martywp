@@ -1,20 +1,5 @@
 // Page
 
-html {
-  background-color: $gray-lighter;
-}
-
-body {
-  background-color: $white;
-}
-
-.container {
-  max-width: $lg;
-  margin: auto;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-}
-
 .page-header {
   @include clearfix;
   margin-top: 1em;

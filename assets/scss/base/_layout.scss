@@ -1,3 +1,5 @@
+// Defaults
+
 *,
 *:before,
 *:after {
@@ -34,4 +36,22 @@ iframe { width: 100%; }
 // Hide the overflow in IE
 svg:not(:root) {
   overflow: hidden;
+}
+
+
+// Theme
+html {
+  // background-color: $gray-lighter;
+}
+
+body {
+  // background-color: $white;
+}
+
+// Containers
+.container {
+  max-width: $lg;
+  margin: auto;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
