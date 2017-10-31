@@ -23,23 +23,17 @@
 
 .form {
 
-  label,
-  &-label {
-    font-weight: 600;
-  }
-
-  input,
-  &-input,
-  textarea,
-  &-textarea {
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='password'],
+  input[type='url'],
+  textarea {
     @include form-input;
   }
 
-
-  .submit,
   input[type="submit"] {
-    @include button($link-color, $white);
-    width: auto;
+    @include button($link-color);
   }
 }
 
@@ -64,20 +58,14 @@
   }
 
   .icon-search {
-    width: 18px;
-    height: 18px;
-    color: $gray;
+    width: 24px;
+    height: 24px;
+    color: $blue;
   }
 }
 
 // Comment Form
 .form-comment {
-  margin-bottom: 1em;
-  padding: 0.5em 2em;
+  padding: 1.5rem;
   background-color: $gray-lighter;
-
-  .form-submit {
-    padding-top: 0.5em;
-    text-align: right;
-  }
 }

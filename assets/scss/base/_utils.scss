@@ -34,6 +34,10 @@
     text-transform: uppercase;
   }
 
+  &-hide {
+    @include text-hide();
+  }
+
 }
 
 // WordPress Core Generated Classes
