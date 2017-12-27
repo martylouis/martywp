@@ -1,6 +1,3 @@
-// main.scss
-@charset "utf-8";
-
 // Base
 @import 'base/functions';
 @import 'base/variables';
@@ -11,9 +8,8 @@
 // @import 'base/grid';
 
 // VENDOR
-
 // jquery.mmenu » http://mmenu.frebsite.nl/
-@import "vendor/mmenu";
+// @import "vendor/mmenu";
 
 // Components
 @import "components/buttons";
@@ -27,5 +23,3 @@
 
 // Templates
 @import "template/page";
-// @import "template/frontpage";
-// @import "template/contact";
