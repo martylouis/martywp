@@ -4,7 +4,7 @@
 // Config
 /////////////////////////////
 
-var $url = 'martywp.dev'; // Local proxy address for browserSync
+var $url = 'martywp.local'; // Local proxy address for browserSync
 var $pkg = './package.json'; // Local package.json path
 var pkg = require($pkg);
 
