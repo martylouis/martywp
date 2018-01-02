@@ -23,7 +23,6 @@ class Setup {
   function theme_defaults() {
 
     // Make theme available for translation
-    // Community translations can be found at https://github.com/roots/roots-translations
     load_theme_textdomain('martywp', get_template_directory() . '/lang');
 
     // Add default posts and comments RSS feed links to head.
