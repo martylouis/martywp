@@ -33,13 +33,8 @@ array_map(function($file) use ($error_msg) {
   'setup',
   'scripts',
 
-  // ACF
-  // 'acf/config',
-  // 'acf/option-biz-info',
-  // 'acf/option-google-services',
-  // 'acf/option-code-injection',
-
   // Addons
+  'acf/config',
   'jetpack',
   // 'woocommerce'
 ]);
