@@ -1,0 +1,150 @@
+// Primary Menu
+
+.menu-primary {
+
+  .header-primary & {
+    display: none;
+  }
+
+  .nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .nav-link {
+    display: block;
+  }
+
+  .active-item,
+  .active-parent {
+    .nav-link {
+      font-weight: 600;
+    }
+  }
+
+  // MMENU
+
+  &.mm-menu {
+
+    .nav-link {
+      margin-bottom: 0.75em;
+      font-size: 1.1em;
+      font-weight: 600;
+      color: $link-color;
+    }
+  }
+
+  .mm-panels > .mm-panel {
+    padding: 3.5em 2em 0;
+  }
+
+  &.mm-offcanvas {
+    max-width: 320px;
+
+    &.mm-right {
+      transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+  }
+
+  .mm-navbar {
+    height: auto;
+    padding: 1.5em 2em 0;
+    line-height: 1;
+    text-align: left;
+    border: 0;
+
+    .mm-title {
+      text-transform: uppercase;
+    }
+  }
+
+  .mm-panels > .mm-panel::after,
+  .mm-panels > .mm-panel::before {
+    height: 1em;
+  }
+
+}
+
+
+@include media-min($md) {
+
+  .menu-primary {
+
+    .header-primary & {
+      display: block;
+    }
+
+    .nav {
+      @include flex-container;
+    }
+
+    .nav-item {
+      margin: 0 1em;
+    }
+
+    .nav-link {
+      padding-top: 1em;
+      padding-bottom: 1em;
+      color: rgba($text-color, 0.85);
+
+      @include hover-focus {
+        color: $link-color;
+      }
+    }
+
+    .active-parent,
+    .active-item {
+      position: relative;
+
+      .nav-link {
+        color: $link-color;
+
+      }
+    }
+  }
+}
+
+// Header Menu Buttons
+
+.header-menu-toggle {
+  @include button-reset;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.75em;
+  color: rgba($link-color, 0.75);
+
+  @include hover-focus {
+    color: $link-color;
+  }
+}
+
+.header-menu-close {
+  @include button-reset;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  padding: 0;
+  margin: 0.5em;
+  font-size: 2.5em;
+  font-weight: 300;
+  line-height: 0.75;
+  color: rgba($text-color, 0.45);
+  border: 0;
+
+}
+
+.header-menu-toggle,
+.header-menu-close {
+
+  @include media-min($md) {
+    display: none;
+  }
+
+  @include hover-focus {
+    color: $text-color;
+    cursor: pointer;
+    outline: 0;
+  }
+}

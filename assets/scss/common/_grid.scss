@@ -1,0 +1,9 @@
+//
+// Grid
+// --------------------------
+
+$grid-gutter-default: 1.5rem;
+
+.grid {
+  @include grid($gutter: $grid-gutter-default);
+}

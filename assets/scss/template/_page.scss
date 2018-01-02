@@ -1,16 +1,31 @@
 // Page
 
-.page-header {
-  @include clearfix;
-  margin-top: 1em;
+// Theme
+html {
+  // background-color: $gray-lighter;
 }
 
-.page-section {
-  @include clearfix;
-  margin-bottom: 1em;
+body {
+  // background-color: $white;
 }
 
-.page-sidebar {
-  margin-top: 1em;
-  margin-bottom: 2em;
+// Containers
+.container {
+  max-width: $xl;
+  padding-right: $grid-gutter-default;
+  padding-left: $grid-gutter-default;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.main {
+
+  .content {
+    @include grid-col($col: 8, $gutter: $grid-gutter-default);
+  }
+
+  .sidebar {
+    @include grid-col($col: 4, $gutter: $grid-gutter-default);
+  }
+
 }

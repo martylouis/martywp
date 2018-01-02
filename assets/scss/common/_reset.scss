@@ -1,0 +1,39 @@
+// Defaults
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+  display: block;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+iframe { width: 100%; }
+
+
+// Hide the overflow in IE
+svg:not(:root) {
+  overflow: hidden;
+}

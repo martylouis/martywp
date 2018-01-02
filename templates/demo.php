@@ -1,7 +1,17 @@
-<?php  /* Template Name: Demo Page */ ?>
-<?php get_template_part('components/site/header'); ?>
-<?php get_template_part('components/page/header'); ?>
-<div class="page-section">
+<?php
+
+/* Template Name: Demo Page */
+
+use MartyWP\Lib\Utils;
+
+?>
+<?php get_template_part('components/header/primary'); ?>
+<header class="entry-header">
+  <h1 class="entry-title" itemprop="headline">
+    <?php echo Utils::title(); ?>
+  </h1>
+</header>
+<section class="entry-section">
   <div class="container">
     <p>A small paragraph to <em>emphasis</em> and show <strong>important</strong> bits.</p>
     <p>
@@ -84,5 +94,5 @@
     <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
   </div>
-</div>
-<?php get_template_part('components/site/footer'); ?>
+</section>
+<?php get_template_part('components/footer/primary'); ?>

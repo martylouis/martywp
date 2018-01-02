@@ -1,25 +1,26 @@
 // Base
-@import 'base/functions';
-@import 'base/variables';
-@import 'base/mixins';
-@import 'base/layout';
-@import 'base/type';
-@import 'base/utils';
-// @import 'base/grid';
+@import "common/functions";
+@import "common/variables";
+@import "common/mixins";
+@import "common/reset";
+@import "common/utils";
+@import "common/type";
+@import "common/buttons";
+@import "common/icons";
+@import "common/grid";
+
 
 // VENDOR
 // jquery.mmenu » http://mmenu.frebsite.nl/
-// @import "vendor/mmenu";
+@import "vendor/mmenu";
 
 // Components
-@import "components/buttons";
-@import "components/forms";
-@import 'components/icons';
-@import "components/menu-primary";
-@import "components/site-header";
-@import "components/site-footer";
-@import "components/sidebars";
-
+@import "components/footer";
+@import "components/form";
+@import "components/header";
+@import "components/menu";
+@import "components/sidebar";
 
 // Templates
 @import "template/page";
+// @import "template/landing"

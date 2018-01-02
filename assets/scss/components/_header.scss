@@ -1,0 +1,21 @@
+// Site Header
+
+.header-primary {
+  @include clearfix;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  .container {
+    @include media-min($md) {
+      @include flex-container;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+
+.header-logo {
+  display: block;
+  font-weight: 700;
+}

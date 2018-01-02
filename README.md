@@ -8,7 +8,7 @@
 
 #### Setup
 
- 1. **IMPORTANT:** Add `define('WP_ENV', 'development');` to your `wp-config.php`.
+ 1. **IMPORTANT:** Add `define('MARTYWP_ENV', 'development');` to your `wp-config.php`.
  * Open up your command line and do `yarn install` or `npm install`
  * Change your local WP dev host URL to the `gulpfile.js`.
 ```js

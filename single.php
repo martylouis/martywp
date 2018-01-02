@@ -4,21 +4,22 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package marty_wp
+ * @package martywp
  */
 
-get_header(); ?>
-<main class="main">
-  <div class="container">
+get_template_part('components/header/primary'); ?>
+
+<div class="container">
+  <div class="grid">
     <div class="content">
       <?php
         while (have_posts()) : the_post();
-          get_template_part('parts/post/content', get_post_format());
+          get_template_part('components/post/content', get_post_format());
         endwhile;
        ?>
     </div>
-    <?php get_sidebar(); ?>
+    <?php get_template_part('components/sidebar/primary'); ?>
   </div>
-</main>
-<?php
-get_footer();
+</div>
+
+<?php get_template_part('components/footer/primary');

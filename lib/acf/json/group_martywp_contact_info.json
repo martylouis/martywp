@@ -1,0 +1,366 @@
+{
+    "key": "group_martywp_contact_info",
+    "title": "Business Info",
+    "fields": [
+        {
+            "key": "field_5a473cf7e4732",
+            "label": "Business Name",
+            "name": "option_biz_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a4aa90ac1b72",
+            "label": "Business Type",
+            "name": "option_biz_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "LocalBusiness": "Local Business"
+            },
+            "default_value": [
+                "LocalBusiness"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5a4aafad91fce",
+            "label": "Business Logo",
+            "name": "option_business_logo",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a4ab2060de2d",
+            "label": "Address",
+            "name": "option_biz_address",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5a4ac7595ee92",
+                    "label": "Street",
+                    "name": "streetAddress",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5a4ac7675ee93",
+                    "label": "City",
+                    "name": "addressLocality",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5a4ac7705ee94",
+                    "label": "State",
+                    "name": "addressRegion",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "AL": "Alabama",
+                        "AK": "Alaska",
+                        "AZ": "Arizona",
+                        "AR": "Arkansas",
+                        "CA": "California",
+                        "CO": "Colorado",
+                        "CT": "Connecticut",
+                        "DE": "Delaware",
+                        "DC": "District Of Columbia",
+                        "FL": "Florida",
+                        "GA": "Georgia",
+                        "HI": "Hawaii",
+                        "ID": "Idaho",
+                        "IL": "Illinois",
+                        "IN": "Indiana",
+                        "IA": "Iowa",
+                        "KS": "Kansas",
+                        "KY": "Kentucky",
+                        "LA": "Louisiana",
+                        "ME": "Maine",
+                        "MD": "Maryland",
+                        "MA": "Massachusetts",
+                        "MI": "Michigan",
+                        "MN": "Minnesota",
+                        "MS": "Mississippi",
+                        "MO": "Missouri",
+                        "MT": "Montana",
+                        "NE": "Nebraska",
+                        "NV": "Nevada",
+                        "NH": "New Hampshire",
+                        "NJ": "New Jersey",
+                        "NM": "New Mexico",
+                        "NY": "New York",
+                        "NC": "North Carolina",
+                        "ND": "North Dakota",
+                        "OH": "Ohio",
+                        "OK": "Oklahoma",
+                        "OR": "Oregon",
+                        "PA": "Pennsylvania",
+                        "RI": "Rhode Island",
+                        "SC": "South Carolina",
+                        "SD": "South Dakota",
+                        "TN": "Tennessee",
+                        "TX": "Texas",
+                        "UT": "Utah",
+                        "VT": "Vermont",
+                        "VA": "Virginia",
+                        "WA": "Washington",
+                        "WV": "West Virginia",
+                        "WI": "Wisconsin",
+                        "WY": "Wyoming"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 1,
+                    "ajax": 1,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5a4ac7785ee95",
+                    "label": "Zip",
+                    "name": "postalCode",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5a4ac78d5ee96",
+                    "label": "Country",
+                    "name": "addressCountry",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_phone",
+            "label": "Phone",
+            "name": "option_phone",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "📞",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_email",
+            "label": "Email",
+            "name": "option_email",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "email@domain.com",
+            "prepend": "📫",
+            "append": ""
+        },
+        {
+            "key": "field_social_links",
+            "label": "Social Platforms",
+            "name": "option_social_links",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "+ Add Link",
+            "sub_fields": [
+                {
+                    "key": "field_social_type",
+                    "label": "Type",
+                    "name": "social_type",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "facebook": "Facebook",
+                        "twitter": "Twitter",
+                        "google": "Google Plus",
+                        "linkedin": "LinkedIn",
+                        "youtube": "YouTube",
+                        "instagram": "Instagram"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_social_url",
+                    "label": "URL",
+                    "name": "social_url",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https:\/\/",
+                    "prepend": "🔗",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-business-info"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1514855769
+}

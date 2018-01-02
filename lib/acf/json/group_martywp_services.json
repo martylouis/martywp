@@ -1,0 +1,81 @@
+{
+    "key": "group_martywp_services",
+    "title": "Google Services",
+    "fields": [
+        {
+            "key": "field_google_analytics_id",
+            "label": "Google Analytics ID",
+            "name": "google_analytics_id",
+            "type": "text",
+            "instructions": "Get your Google Analytics ID here: https:\/\/analytics.google.com",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "UA-XXXXX-YY",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_gtm_id",
+            "label": "Google Tag Manager ID",
+            "name": "google_tag_manager_id",
+            "type": "text",
+            "instructions": "Get your Google Tag Manager Container ID here: https:\/\/tagmanager.google.com",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "GTM-xxxxxxx",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_google_maps_api_key",
+            "label": "Google Maps API key",
+            "name": "google_maps_api_key",
+            "type": "text",
+            "instructions": "Get your key here: https:\/\/developers.google.com\/maps\/documentation\/javascript\/tutorial?authuser=1#Loading_the_Maps_API",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-google-services"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1514845765
+}

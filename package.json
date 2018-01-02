@@ -1,13 +1,13 @@
 {
-  "name": "marty_wp",
-  "version": "1.3.0",
+  "name": "martywp",
+  "version": "1.0.0",
   "author": "Marty Thierry <marty@martylouis.com>",
-  "homepage": "https://github.com/martylouis/marty_wp",
+  "homepage": "https://github.com/martylouis/martywp",
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/martylouis/marty_wp.git"
+    "url": "https://github.com/martylouis/martywp.git"
   },
   "engines": {
     "node": ">= 0.10.0"

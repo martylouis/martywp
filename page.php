@@ -9,29 +9,22 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package marty_wp
+ * @package martywp
  */
 
-get_header(); ?>
+get_template_part('components/header/primary'); ?>
 
-<main class="main">
-  <div class="container">
+
+<div class="container">
+  <div class="grid">
     <div class="content">
     <?php while (have_posts()) : the_post(); ?>
-      <div <?php post_class('entry'); ?>>
-        <header class="entry-header">
-          <h1 class="entry-title" itemprop="headline">
-            <?php echo _base_title(); ?>
-          </h1>
-        </header>
-        <div class="entry-content">
-          <?php the_content(); ?>
-        </div>
-      </div>
+      <?php get_template_part('components/page/content'); ?>
       <?php endwhile; ?>
     </div>
-    <?php get_sidebar(); ?>
+    <?php get_template_part('components/sidebar/primary'); ?>
   </div>
-</main>
+</div>
 
-<?php get_footer();
+
+<?php get_template_part('components/footer/primary');
