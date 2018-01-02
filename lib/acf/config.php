@@ -29,7 +29,7 @@ class Config {
   /**
    * Check for ACF
    */
-  public function check_acf() {
+  public static function check_acf() {
     $acf = class_exists('acf') ? acf() : NULL;
     if ( !isset( $acf ) || version_compare($acf->settings['version'], '5.0', '<') ) :
       add_action( 'admin_notices', [$this, 'acf_error_msg'] );
@@ -40,21 +40,21 @@ class Config {
     endif;
   }
 
-  public function acf_error_msg() {
+  public static function acf_error_msg() {
     $msg = 'Please install Advanced Custom Fields.';
     printf(__('<div class="update error"><p>%s</p></div>'), $msg);
   }
 
 
   // Save JSON fields
-  public function acf_json_save( $path ) {
+  public static function acf_json_save( $path ) {
     $path = get_stylesheet_directory() . '/lib/acf/json';
     return $path;
   }
 
   // Load JSON fields
 
-  public function acf_json_load( $paths ) {
+  public static function acf_json_load( $paths ) {
     unset($paths[0]); // remove original path (optional)
     $paths[] = get_stylesheet_directory() . '/lib/acf/json';
     return $paths;
@@ -62,7 +62,7 @@ class Config {
 
   // Setup Options Page
 
-  public function acf_options_page() {
+  public static function acf_options_page() {
     if( function_exists('acf_add_options_page') ) {
       acf_add_options_page([
         'page_title'   => 'Site Options',
@@ -92,7 +92,7 @@ class Config {
   /**
    * Load Custom Stylesheet
    */
-  public function acf_admin_styles() {
+  public static function acf_admin_styles() {
     wp_register_style('martywp_acf_admin_styles', get_template_directory_uri() . '/lib/acf/admin_styles.css', false, NULL);
     wp_enqueue_style('martywp_acf_admin_styles');
   }
