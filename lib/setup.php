@@ -1,6 +1,6 @@
 <?php
 
-namespace MartyWP\Lib\Setup;
+namespace MartyWP\Lib;
 
 use MartyWP\Lib\Utils;
 
