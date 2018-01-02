@@ -34,10 +34,10 @@ array_map(function($file) use ($error_msg) {
   'scripts',
 
   // ACF
-  'acf/config',
-  'acf/option-biz-info',
-  'acf/option-google-services',
-  'acf/option-code-injection',
+  // 'acf/config',
+  // 'acf/option-biz-info',
+  // 'acf/option-google-services',
+  // 'acf/option-code-injection',
 
   // Addons
   'jetpack',

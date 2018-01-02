@@ -5,12 +5,6 @@
  * @package martywp
  */
 
-namespace MartyWP;
-
-use MartyWP\Lib\ACF\Option\BizInfo;
-
-$biz = new BizInfo;
-
 ?>
 
 </main>
@@ -18,7 +12,6 @@ $biz = new BizInfo;
 <footer class="global-footer" role="contentinfo">
   <div class="container">
     <?php printf('<p><span>&copy; %1$s %2$s</span></p>', date('Y'), get_bloginfo('name')); ?>
-    <?php $biz->the_localBusiness(); ?>
   </div>
 </footer>
 </div>
