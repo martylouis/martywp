@@ -11,15 +11,16 @@ $post_auth_link = get_author_posts_url(get_the_author_meta('ID'));
 $author_html = sprintf('<a href="%1$s"><span itemprop="author">%2$s</span></a>', $post_auth_link, $post_auth);
 
 $comment_count = get_comments_number();
+$comment__n = sprintf(_n('%s Comment', '%s Comments', $comment_count, 'martywp'), number_format_i18n( $comment_count ));
 $comment_html = '
-  <a href="%1$s#comments" class="entry-meta-comments">
-    %3$s %2$s
+  | <a href="%s#comments" class="entry-meta-comments">
+    %s %s
   </a>
 ';
-$show_comments = $comment_count > 0 ? sprintf($comment_html, get_the_permalink(), $comment_count, Utils::get_svg('comment')) : '';
+$comment_output = $comment_count > 0 ? sprintf($comment_html, get_the_permalink(), Utils::get_svg('comment'), $comment__n ) : '';
 
 ?>
 
 <p class="entry-meta">
-  <?php printf(__('By %s on %s %s'), $author_html, $time_html, $show_comments); ?>
+  <?php printf(__('By %s on %s %s'), $author_html, $time_html, $comment_output); ?>
 </p>
