@@ -1,4 +1,4 @@
-<?php use MartyWP\Lib\Utils; ?>
+<?php use MartyWP\Lib\Entry; ?>
 
 <footer class="post-footer">
   <?php
@@ -19,7 +19,7 @@
 
   <h3 class="post-list-heading">Related Posts</h3>
   <div class="post-list post-list-related">
-    <?php Utils::related_posts($post, 2); ?>
+    <?php Entry::related_posts($post, 2); ?>
   </div>
 
 </footer>

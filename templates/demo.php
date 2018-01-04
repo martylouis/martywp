@@ -2,13 +2,13 @@
 
 /* Template Name: Demo Page */
 
-use MartyWP\Lib\Utils;
+use MartyWP\Lib\Entry;
 
 ?>
 <?php get_template_part('components/header/primary'); ?>
 <header class="entry-header">
   <h1 class="entry-title" itemprop="headline">
-    <?php echo Utils::title(); ?>
+    <?php echo Entry::title(); ?>
   </h1>
 </header>
 <section class="entry-section">
