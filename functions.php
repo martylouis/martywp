@@ -32,6 +32,7 @@ array_map(function($file) use ($error_msg) {
   'utils',
   'setup',
   'scripts',
+  'entry',
 
   // Addons
   'acf/config',
