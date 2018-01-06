@@ -2,9 +2,6 @@
 
 namespace MartyWP\Lib;
 
-use MartyWP\Lib\Utils;
-
-
 class Setup {
 
   function __construct() {
@@ -18,11 +15,13 @@ class Setup {
     add_filter('excerpt_more', [$this, 'excerpt_more']);
     add_filter('excerpt_length', [$this, 'excerpt_length'], 999);
     add_filter('get_the_archive_title', [$this, 'archive_title']);
+    add_filter('image_size_names_choose', [$this, 'custom_img_size_names']);
   }
 
   function theme_defaults() {
 
     // Make theme available for translation
+    // Community translations can be found at https://github.com/roots/roots-translations
     load_theme_textdomain('martywp', get_template_directory() . '/lang');
 
     // Add default posts and comments RSS feed links to head.
@@ -45,8 +44,42 @@ class Setup {
     // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
     // http://codex.wordpress.org/Function_Reference/add_image_size
     add_theme_support('post-thumbnails');
-    add_image_size('featured_img', 1200, 1200, false);
-    add_image_size('featured_img_thumb', 600, 600, false);
+
+      // Update Media sizes
+      update_option('thumbnail_size_w', '128');
+      update_option('thumbnail_size_h', '128');
+      update_option('medium_size_w', '768');
+      update_option('medium_size_h', '768');
+
+
+      // Cropped Image Sizes
+      add_image_size('crop_square_ti', 256, 256, true);
+      // add_image_size('crop_square_xs', 384, 384, true);
+      // add_image_size('crop_square_sm', 512, 512, true);
+      // add_image_size('crop_square_md', 768, 768, true);
+      // add_image_size('crop_square_lg', 1024, 1024, true);
+      // add_image_size('crop_square_xl', 1920, 1920, true);
+
+      // Classic (3:2)
+      // add_image_size('crop_classic_xs', 384, 256, true);
+      // add_image_size('crop_classic_sm', 512, 341, true);
+      // add_image_size('crop_classic_md', 768, 512, true);
+      // add_image_size('crop_classic_lg', 1024, 683, true);
+      // add_image_size('crop_classic_xl', 1920, 1280, true);
+
+      // Standard(4:3)
+      add_image_size('crop_standard_xs', 384, 288, true);
+      add_image_size('crop_standard_sm', 512, 384, true);
+      add_image_size('crop_standard_md', 768, 576, true);
+      add_image_size('crop_standard_lg', 1024, 683, true);
+      add_image_size('crop_standard_xl', 1920, 1440, true);
+
+      // HD(16:9)
+      // add_image_size('crop_hd_xs', 384, 216, true);
+      // add_image_size('crop_hd_sm', 512, 288, true);
+      // add_image_size('crop_hd_md', 768, 432, true);
+      // add_image_size('crop_hd_lg', 1024, 476, true);
+      // add_image_size('crop_hd_xl', 1920, 1080, true);
 
     // Add post formats
     // http://codex.wordpress.org/Post_Formats
@@ -62,6 +95,23 @@ class Setup {
     add_editor_style('/assets/dist/css/editor-style.min.css');
   }
 
+
+  /**
+   * Custom Image Size Names
+   *
+   * Add custom image size names for use within the WP Admin
+   */
+  function custom_img_size_names($sizes) {
+    $names = [
+      'crop_standard_xs' => __('X-Small'),
+      'crop_standard_sm' => __('Small'),
+      'crop_standard_xl' => __('X-Large'),
+    ];
+
+    return array_merge($sizes, $names);
+  }
+
+
   /**
    * Setup Widgets
    */
@@ -69,18 +119,18 @@ class Setup {
     register_sidebar(array(
       'name'          => __('Primary', 'martywp'),
       'id'            => 'sidebar-primary',
-      'before_widget' => '<aside class="widget %1$s %2$s">',
-      'after_widget'  => '</aside>',
-      'before_title'  => '<h3 class="widget-heading">',
+      'before_widget' => '<section class="section widget %1$s %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h3 class="section-title">',
       'after_title'   => '</h3>',
     ));
 
     register_sidebar(array(
       'name'          => __('Secondary', 'martywp'),
       'id'            => 'sidebar-secondary',
-      'before_widget' => '<aside class="widget %1$s %2$s">',
-      'after_widget'  => '</aside>',
-      'before_title'  => '<h3 class="widget-heading">',
+      'before_widget' => '<section class="section widget %1$s %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h3 class="section-title">',
       'after_title'   => '</h3>',
     ));
   }
@@ -159,7 +209,7 @@ class Setup {
     } elseif (is_tag()) {
       $title = single_tag_title('', false);
     } elseif (is_author()) {
-      $title = sprintf(__('<span class="author">Posts by %s</span>', 'martywp'), get_the_author());
+      $title = sprintf(__('<span class="author">Articles by: %s</span>', 'martywp'), get_the_author());
     } elseif (is_post_type_archive()) {
       $title = post_type_archive_title('', false);
     } elseif (is_tax()) {
