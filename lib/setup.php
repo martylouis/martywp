@@ -16,6 +16,7 @@ class setup {
     add_filter('excerpt_length', [$this, 'excerpt_length'], 999);
     add_filter('get_the_archive_title', [$this, 'archive_title']);
     add_filter('image_size_names_choose', [$this, 'custom_img_size_names']);
+    add_filter('the_content', [$this, 'filter_ptags_on_images']);
   }
 
   function theme_defaults() {
@@ -34,9 +35,9 @@ class setup {
     // Register wp_nav_menu() menus
     // http://codex.wordpress.org/Function_Reference/register_nav_menus
     register_nav_menus(array(
-      'menu_primary' => __('Primary Menu', 'martywp'),
+      'header_nav' => __('Header Nav', 'martywp'),
+      // 'nav_secondary' => __('Secondary nav', 'martywp')
       // 'menu_blog' => __('Blog Menu', 'martywp'),
-      // 'menu_footer' => __('Footer Menu', 'martywp')
     ));
 
     // Add post thumbnails
@@ -61,18 +62,18 @@ class setup {
       // add_image_size('crop_square_xl', 1920, 1920, true);
 
       // Classic (3:2)
-      // add_image_size('crop_classic_xs', 384, 256, true);
-      // add_image_size('crop_classic_sm', 512, 341, true);
-      // add_image_size('crop_classic_md', 768, 512, true);
-      // add_image_size('crop_classic_lg', 1024, 683, true);
-      // add_image_size('crop_classic_xl', 1920, 1280, true);
+      add_image_size('crop_classic_xs', 384, 256, true);
+      add_image_size('crop_classic_sm', 512, 341, true);
+      add_image_size('crop_classic_md', 768, 512, true);
+      add_image_size('crop_classic_lg', 1024, 683, true);
+      add_image_size('crop_classic_xl', 1920, 1280, true);
 
       // Standard(4:3)
-      add_image_size('crop_standard_xs', 384, 288, true);
-      add_image_size('crop_standard_sm', 512, 384, true);
-      add_image_size('crop_standard_md', 768, 576, true);
-      add_image_size('crop_standard_lg', 1024, 683, true);
-      add_image_size('crop_standard_xl', 1920, 1440, true);
+      // add_image_size('crop_standard_xs', 384, 288, true);
+      // add_image_size('crop_standard_sm', 512, 384, true);
+      // add_image_size('crop_standard_md', 768, 576, true);
+      // add_image_size('crop_standard_lg', 1024, 683, true);
+      // add_image_size('crop_standard_xl', 1920, 1440, true);
 
       // HD(16:9)
       // add_image_size('crop_hd_xs', 384, 216, true);
@@ -103,9 +104,12 @@ class setup {
    */
   function custom_img_size_names($sizes) {
     $names = [
-      'crop_standard_xs' => __('X-Small'),
-      'crop_standard_sm' => __('Small'),
-      'crop_standard_xl' => __('X-Large'),
+      'crop_square_ti' => __('Square Tiny'),
+      'crop_classic_xs' => __('(3:2) X-Small'),
+      'crop_classic_sm' => __('(3:2) Small'),
+      'crop_classic_md' => __('(3:2) Medium'),
+      'crop_classic_lg' => __('(3:2) Large'),
+      'crop_classic_xl' => __('(3:2) X-Large'),
     ];
 
     return array_merge($sizes, $names);
@@ -117,21 +121,12 @@ class setup {
    */
   function widgets() {
     register_sidebar(array(
-      'name'          => __('Primary', 'martywp'),
-      'id'            => 'sidebar-primary',
-      'before_widget' => '<section class="section widget %1$s %2$s">',
+      'name'          => __('Page Sidebar', 'martywp'),
+      'id'            => 'page-sidebar',
+      'before_widget' => '<section class="widget gr30__widget %1$s %2$s">',
       'after_widget'  => '</section>',
-      'before_title'  => '<h3 class="section-title">',
-      'after_title'   => '</h3>',
-    ));
-
-    register_sidebar(array(
-      'name'          => __('Secondary', 'martywp'),
-      'id'            => 'sidebar-secondary',
-      'before_widget' => '<section class="section widget %1$s %2$s">',
-      'after_widget'  => '</section>',
-      'before_title'  => '<h3 class="section-title">',
-      'after_title'   => '</h3>',
+      'before_title'  => '<div class="widget__header"><h3 class="widget__title">',
+      'after_title'   => '</h3></div>',
     ));
   }
 
@@ -174,6 +169,11 @@ class setup {
         $classes[] = basename(get_permalink());
       }
     }
+
+    if (has_post_thumbnail()) :
+      $classes = array_merge($classes, ['page--has-thumb']);
+    endif;
+
     return $classes;
   }
 
@@ -190,7 +190,7 @@ class setup {
   * Clean up the_excerpt()
   */
   function excerpt_more() {
-    return sprintf(__(' &hellip; <p class="entry-read-more"><a class="button" href="%s">Read More &rarr;</a></p>'), get_permalink());
+    return sprintf(__(' &hellip; <p class="entry-read-more"><a class="button outline sm" href="%s">Read More &rarr;</a></p>'), get_permalink());
   }
 
   /**
@@ -217,6 +217,10 @@ class setup {
     }
 
     return $title;
+  }
+
+  function filter_ptags_on_images($content){
+    return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
   }
 
 
