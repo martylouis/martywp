@@ -12,7 +12,7 @@
  * @package martywp
  */
 
-get_template_part('components/header/primary'); ?>
+get_template_part('components/site/header'); ?>
 
 
 <div class="container">
@@ -22,9 +22,9 @@ get_template_part('components/header/primary'); ?>
       <?php get_template_part('components/page/content'); ?>
       <?php endwhile; ?>
     </div>
-    <?php get_template_part('components/sidebar/primary'); ?>
+    <?php get_template_part('components/page/sidebar'); ?>
   </div>
 </div>
 
 
-<?php get_template_part('components/footer/primary');
+<?php get_template_part('components/site/footer');
