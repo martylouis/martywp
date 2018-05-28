@@ -1,7 +1,7 @@
 <?php
-namespace MartyWP\Lib;
 
-use MartyWP\Lib\Utils;
+namespace martywp\lib;
+use martywp\utils;
 
 /**
 * Load our theme Scripts!
@@ -11,7 +11,7 @@ use MartyWP\Lib\Utils;
 
 if (!defined('ABSPATH')) exit;
 
-class Scripts {
+class scripts {
 
   function __construct() {
 
@@ -36,7 +36,7 @@ class Scripts {
 
   public function load_scripts() {
 
-    wp_enqueue_style('base_css', Utils::asset_path('styles', 'css'), null, $this->pkg_version(), null);
+    wp_enqueue_style('base_css', utils::assets_path('styles', 'css'), null, $this->pkg_version(), null);
 
     if (!is_admin() && current_theme_supports('jquery-cdn')) {
       wp_deregister_script('jquery');
@@ -49,7 +49,7 @@ class Scripts {
       wp_enqueue_script('comment-reply');
     }
 
-    wp_enqueue_script('base_js', Utils::asset_path('scripts', 'js'), array(), $this->pkg_version(), true);
+    wp_enqueue_script('base_js', utils::assets_path('scripts', 'js'), array(), $this->pkg_version(), true);
   }
 
   /**

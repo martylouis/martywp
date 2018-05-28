@@ -1,6 +1,6 @@
 <?php
 
-use MartyWP\Lib\Utils;
+use martywp\utils;
 
 $post_time = get_the_time('c');
 $post_date = get_the_date('F n, Y');
@@ -17,7 +17,7 @@ $comment_html = '
     %s %s
   </a>
 ';
-$comment_output = $comment_count > 0 ? sprintf($comment_html, get_the_permalink(), Utils::get_svg('comment'), $comment__n ) : '';
+$comment_output = $comment_count > 0 ? sprintf($comment_html, get_the_permalink(), utils::get_svg('comment'), $comment__n ) : '';
 
 ?>
 

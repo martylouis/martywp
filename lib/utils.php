@@ -5,11 +5,11 @@
  * @package martywp
  */
 
-namespace MartyWP\Lib;
+namespace martywp;
 
 if (!defined('ABSPATH')) exit;
 
-class Utils {
+class utils {
 
   /**
    * Debug code in Javascript console
@@ -65,7 +65,7 @@ class Utils {
   /**
    *  Get assets based on MARTYWP_ENV
    */
-  public static function get_assets_path($name, $type) {
+  public static function assets_path($name, $type) {
     if (MARTYWP_ENV === 'development') {
       $asset_dir = get_template_directory_uri() . '/assets';
       $min = '';

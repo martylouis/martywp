@@ -1,6 +1,6 @@
 <?php
 
-namespace MartyWP\Lib;
+namespace martywp;
 
 use WP_Query;
 
@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) exit;
  * Common entry utilities for display within loop
  */
 
-class Entry {
+class entry {
 
   /**
    * Entry titles

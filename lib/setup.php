@@ -1,8 +1,8 @@
 <?php
 
-namespace MartyWP\Lib;
+namespace martywp;
 
-class Setup {
+class setup {
 
   function __construct() {
 

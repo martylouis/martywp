@@ -1,6 +1,6 @@
 <?php
 
-use MartyWP\Lib\Utils;
+use martywp\utils;
 
 ?>
 
@@ -9,6 +9,6 @@ use MartyWP\Lib\Utils;
   <input type="search" value="<?php echo get_search_query(); ?>" name="s" class="form-input" placeholder="<?php _e('Search...', 'martywp'); ?>" required>
   <button type="submit" class="form-submit">
     <span class="text-hide"><?php _e('Search', 'martywp'); ?></span>
-    <?php Utils::the_svg('search'); ?>
+    <?php utils::the_svg('search'); ?>
   </button>
 </form>
