@@ -5,12 +5,16 @@
 use martywp\entry;
 
 ?>
-<?php get_template_part('components/header/primary'); ?>
+<?php get_template_part('components/site/header'); ?>
+
 <header class="entry-header">
-  <h1 class="entry-title" itemprop="headline">
-    <?php echo entry::title(); ?>
-  </h1>
+  <div class="container">
+    <h1 class="entry-title" itemprop="headline">
+      <?php echo entry::title(); ?>
+    </h1>
+  </div>
 </header>
+
 <section class="entry-section">
   <div class="container">
     <p>A small paragraph to <em>emphasis</em> and show <strong>important</strong> bits.</p>
@@ -95,4 +99,5 @@ use martywp\entry;
 
   </div>
 </section>
-<?php get_template_part('components/footer/primary'); ?>
+
+<?php get_template_part('components/site/footer'); ?>
