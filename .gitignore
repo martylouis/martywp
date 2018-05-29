@@ -110,7 +110,7 @@ $RECYCLE.BIN/
 *.lnk
 
 ### WordPress ###
-./index.php
+index.php
 license.txt
 local-phpinfo.php
 readme.html
